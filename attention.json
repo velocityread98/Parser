@@ -1,0 +1,3158 @@
+{
+  "id": "page_1_order_0",
+  "label": "title",
+  "text": "Attention Is All You Need",
+  "level": 0,
+  "page": 1,
+  "reading_order": 0,
+  "bbox": [
+    239,
+    114,
+    454,
+    134
+  ],
+  "section_number": null,
+  "summary": "The document section titled \"Attention Is All You Need\" discusses the Google Brain project, Google Research, and the University of Toronto, highlighting their contributions to artificial intelligence, machine learning, and research. Various authors affiliated with Google Brain and Google Research are mentioned, along with their email addresses. The document introduces the Transformer network architecture, emphasizing its reliance on attention mechanisms for sequence transduction tasks. Key sections cover the abstract, introduction, background, model architecture, self-attention, training, results, conclusion, and references. Technical details include the structure of the Transformer model, self-attention mechanisms, training regimes for machine translation models, and performance metrics like BLEU scores. The document showcases the efficiency and effectiveness of the Transformer model in achieving state-of-the-art results in translation tasks, with specific examples and comparisons provided. Overall, it underscores the importance of attention mechanisms in neural networks, the impact of model variations on performance, and the potential for extending the Transformer model to other domains beyond text. The references section offers a comprehensive overview of key research papers and studies in the field, highlighting the contributions of notable researchers and the significance of their work in advancing AI and machine learning.",
+  "embeddings": [],
+  "children": [
+    {
+      "id": "page_1_order_23",
+      "label": "sec",
+      "text": "Abstract",
+      "level": 1,
+      "page": 1,
+      "reading_order": 23,
+      "bbox": [
+        320,
+        376,
+        373,
+        394
+      ],
+      "section_number": null,
+      "summary": "The abstract discusses the Transformer network architecture, which relies on attention mechanisms and eliminates the need for recurrent or convolutional neural networks in sequence transduction models. The model has shown superior performance in terms of quality, parallelizability, and training time on machine translation tasks. For instance, it achieved a BLEU score of 28.4 on the WMT 2014 English-to-German translation task, surpassing existing results by over 2 BLEU. Furthermore, on the WMT 2014 English-to-French translation task, the model achieved a state-of-the-art BLEU score of 41.0 after training for 3.5 days on eight GPUs, demonstrating significantly reduced training time compared to other models in the literature. This highlights the effectiveness and efficiency of the Transformer network architecture in improving translation tasks.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": [
+        {
+          "id": "page_1_order_24",
+          "label": "para",
+          "text": "The dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.0 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature.",
+          "level": -1,
+          "page": 1,
+          "reading_order": 24,
+          "bbox": [
+            158,
+            403,
+            535,
+            564
+          ],
+          "section_number": null,
+          "summary": "The text discusses the Transformer network architecture, which is based solely on attention mechanisms and eliminates the need for recurrent or convolutional neural networks in sequence transduction models. The model has been shown to outperform existing models in terms of quality, parallelizability, and training time on machine translation tasks. For example, the model achieved a BLEU score of 28.4 on the WMT 2014 English-to-German translation task, surpassing existing results by over 2 BLEU. Additionally, on the WMT 2014 English-to-French translation task, the model achieved a state-of-the-art BLEU score of 41.0 after training for 3.5 days on eight GPUs, which is significantly less training time compared to other models in the literature.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        }
+      ]
+    },
+    {
+      "id": "page_1_order_25",
+      "label": "sec",
+      "text": "1 Introduction",
+      "level": 1,
+      "page": 1,
+      "reading_order": 25,
+      "bbox": [
+        123,
+        589,
+        215,
+        600
+      ],
+      "section_number": "1",
+      "summary": "The introduction section discusses the significance of recurrent neural networks, particularly long short-term memory and gated recurrent neural networks, in sequence modeling and transduction tasks like language modeling and machine translation. Efforts are being made to enhance recurrent language models and encoder-decoder architectures for better performance. The section highlights the contributions of individuals in developing Transformer models, with Jakob proposing self-attention, Ashish and Illia designing the first Transformer models, Noam suggesting key components like scaled dot-product attention, and Niki and Llion working on model variants and efficient inference. The work was conducted while the author was affiliated with Google Brain and Google Research. The section also introduces the Transformer model, which relies on attention mechanisms instead of recurrence, allowing for increased parallelization and achieving state-of-the-art translation quality. Attention mechanisms are crucial for modeling dependencies in sequences, and recent advancements have improved computational efficiency through factorization tricks and conditional computation. The discussion also touches on the limitations of sequential computation in recurrent models and the benefits of using attention mechanisms for establishing global dependencies in the Transformer architecture. The section references the 31st Conference on Neural Information Processing Systems (NIPS 2017) as a platform for discussing advancements in neural information processing systems.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": [
+        {
+          "id": "page_1_order_26",
+          "label": "para",
+          "text": "Recurrent neural networks, long short-term memory [12] and gated recurrent [7] neural networks\nin particular, have been firmly established as state of the art approaches in sequence modeling and\ntransduction problems such as language modeling and machine translation [29, 2, 5] . Numerous\nefforts have since continued to push the boundaries of recurrent language models and encoder-decoder\narchitectures [31, 21, 13] .",
+          "level": -1,
+          "page": 1,
+          "reading_order": 26,
+          "bbox": [
+            122,
+            616,
+            571,
+            680
+          ],
+          "section_number": null,
+          "summary": "Recurrent neural networks, specifically long short-term memory and gated recurrent neural networks, are widely recognized as leading approaches in sequence modeling and transduction tasks like language modeling and machine translation. Ongoing efforts are focused on advancing recurrent language models and encoder-decoder architectures to further improve their performance.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_1_order_27",
+          "label": "fnote",
+          "text": "* Equal contribution. Listing order is random. Jakob proposed replacing RNNs with self-attention and started\nthe effort to evaluate this idea. Ashish, with Illia, designed and implemented the first Transformer models and\nhas been crucially involved in every aspect of this work. Noam proposed scaled dot-product attention, multi-head\nattention and the parameter-free position representation and became the other person involved in nearly every\ndetail. Niki designed, implemented, tuned and evaluated countless model variants in our original codebase and\ntensor2tensor. Llion also experimented with novel model variants, was responsible for our initial codebase, and\nefficient inference and visualizations. Lukasz and Aidan spent countless long days designing various parts of and\nimplementing tensor2tensor, replacing our earlier codebase, greatly improving results and massively accelerating\nour research.",
+          "level": -1,
+          "page": 1,
+          "reading_order": 27,
+          "bbox": [
+            122,
+            680,
+            571,
+            782
+          ],
+          "section_number": null,
+          "summary": "The text describes the contributions of different individuals to the development and implementation of Transformer models in a research project. Jakob proposed replacing RNNs with self-attention and initiated the evaluation process. Ashish and Illia designed and implemented the first Transformer models. Noam proposed key components like scaled dot-product attention and multi-head attention. Niki designed, implemented, and evaluated numerous model variants. Llion worked on novel model variants, the initial codebase, and efficient inference and visualizations. Lukasz and Aidan played a significant role in designing and implementing tensor2tensor, which replaced the original codebase and improved research outcomes.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_1_order_28",
+          "label": "fnote",
+          "text": "$^{\\dagger}$ Work performed while at Google Brain.",
+          "level": -1,
+          "page": 1,
+          "reading_order": 28,
+          "bbox": [
+            131,
+            787,
+            302,
+            797
+          ],
+          "section_number": null,
+          "summary": "The text indicates that the work mentioned in the document was performed while the author was at Google Brain. This footnote signifies that the author was affiliated with Google Brain at the time the work was conducted.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_1_order_29",
+          "label": "fnote",
+          "text": "${ }^{\\ddagger}$ Work performed while at Google Research.",
+          "level": -1,
+          "page": 1,
+          "reading_order": 29,
+          "bbox": [
+            131,
+            797,
+            320,
+            809
+          ],
+          "section_number": null,
+          "summary": "The text indicates that the work mentioned in the document was conducted while the author was employed at Google Research. This footnote is likely included to acknowledge the author's affiliation with Google Research during the project mentioned in the document.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_1_order_30",
+          "label": "foot",
+          "text": "31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA",
+          "level": -1,
+          "page": 1,
+          "reading_order": 30,
+          "bbox": [
+            122,
+            824,
+            517,
+            842
+          ],
+          "section_number": "31",
+          "summary": "The text refers to the 31st Conference on Neural Information Processing Systems (NIPS 2017) that took place in Long Beach, California, USA. This conference focused on topics related to neural information processing systems and brought together experts, researchers, and professionals in the field to discuss the latest advancements and research findings. The event likely featured presentations, workshops, and discussions on various aspects of neural information processing systems, providing a platform for networking and collaboration within the industry.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_2_order_0",
+          "label": "para",
+          "text": "Recurrent models typically factor computation along the symbol positions of the input and output\nsequences. Aligning the positions to steps in computation time, they generate a sequence of hidden\nstates $h_t$ , as a function of the previous hidden state $h_{t-1}$ and the input for position $t$ . This inherently\nsequential nature precludes parallelization within training examples, which becomes critical at longer\nsequence lengths, as memory constraints limit batching across examples. Recent work has achieved\nsignificant improvements in computational efficiency through factorization tricks [18] and conditional\ncomputation [26] , while also improving model performance in case of the latter. The fundamental\nconstraint of sequential computation, however, remains.",
+          "level": -1,
+          "page": 2,
+          "reading_order": 0,
+          "bbox": [
+            122,
+            80,
+            571,
+            181
+          ],
+          "section_number": null,
+          "summary": "Recurrent models in sequence processing factor computation along input and output symbol positions, generating hidden states $h_t$ based on previous hidden states and input at each position. This sequential nature hinders parallelization within training examples, especially with longer sequences due to memory constraints. Recent advancements have improved computational efficiency through factorization tricks and conditional computation, enhancing model performance. However, the fundamental constraint of sequential computation still exists.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_2_order_1",
+          "label": "para",
+          "text": "Attention mechanisms have become an integral part of compelling sequence modeling and transduc-\ntion models in various tasks, allowing modeling of dependencies without regard to their distance in\nthe input or output sequences [2, 16] . In all but a few cases [22] , however, such attention mechanisms\nare used in conjunction with a recurrent network.",
+          "level": -1,
+          "page": 2,
+          "reading_order": 1,
+          "bbox": [
+            114,
+            188,
+            571,
+            237
+          ],
+          "section_number": null,
+          "summary": "Attention mechanisms are essential in sequence modeling and transduction tasks as they allow for modeling dependencies regardless of their distance in input or output sequences. While attention mechanisms are typically used with recurrent networks, there are some cases where they are not.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_2_order_2",
+          "label": "para",
+          "text": "In this work we propose the Transformer, a model architecture eschewing recurrence and instead\nrelying entirely on an attention mechanism to draw global dependencies between input and output.\nThe Transformer allows for significantly more parallelization and can reach a new state of the art in\ntranslation quality after being trained for as little as twelve hours on eight P100 GPUs.",
+          "level": -1,
+          "page": 2,
+          "reading_order": 2,
+          "bbox": [
+            114,
+            241,
+            571,
+            295
+          ],
+          "section_number": null,
+          "summary": "The Transformer is a model architecture that does not use recurrence, relying solely on attention mechanisms to establish global dependencies between input and output. This design allows for increased parallelization and has achieved state-of-the-art translation quality after just twelve hours of training on eight P100 GPUs.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        }
+      ]
+    },
+    {
+      "id": "page_2_order_3",
+      "label": "sec",
+      "text": "2 Background",
+      "level": 1,
+      "page": 2,
+      "reading_order": 3,
+      "bbox": [
+        122,
+        312,
+        213,
+        325
+      ],
+      "section_number": "2",
+      "summary": "The background section of the document introduces various models, including Extended Neural GPU, ByteNet, ConvS2S, and the Transformer model, that aim to reduce sequential computation by using convolutional neural networks for parallel computation of hidden representations. These models differ in the number of operations required to relate signals from different positions, with ConvS2S growing linearly and ByteNet growing logarithmically. The Transformer model reduces operations to a constant level but may result in reduced effective resolution, addressed through Multi-Head Attention. Self-attention, or intra-attention, connects different positions within a sequence to generate a representation and has been successful in tasks like reading comprehension and abstractive summarization. End-to-end memory networks use a recurrent attention mechanism and have shown strong performance in question answering and language modeling. The Transformer model is highlighted for using self-attention exclusively for input and output representations without relying on RNNs or convolution. The section sets the stage for further discussion on the Transformer model, self-attention, and their advantages over other models. Key technical details include the use of self-attention, the performance of end-to-end memory networks, and the unique approach of the Transformer model. The section references specific models and studies to support its points, providing a comprehensive overview of the models and mechanisms discussed.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": [
+        {
+          "id": "page_2_order_4",
+          "label": "para",
+          "text": "The goal of reducing sequential computation also forms the foundation of the Extended Neural GPU\n[20] , ByteNet [15] and ConvS2S [8] , all of which use convolutional neural networks as basic building\nblock, computing hidden representations in parallel for all input and output positions. In these models,\nthe number of operations required to relate signals from two arbitrary input or output positions grows\nin the distance between positions, linearly for ConvS2S and logarithmically for ByteNet. This makes\nit more difficult to learn dependencies between distant positions [11] . In the Transformer this is\nreduced to a constant number of operations, albeit at the cost of reduced effective resolution due\nto averaging attention-weighted positions, an effect we counteract with Multi-Head Attention as\ndescribed in section 3.2 .",
+          "level": -1,
+          "page": 2,
+          "reading_order": 4,
+          "bbox": [
+            114,
+            339,
+            571,
+            448
+          ],
+          "section_number": null,
+          "summary": "The text discusses different models, such as Extended Neural GPU, ByteNet, and ConvS2S, that aim to reduce sequential computation by using convolutional neural networks to compute hidden representations in parallel for all input and output positions. These models vary in the number of operations required to relate signals from different positions, with ConvS2S growing linearly and ByteNet growing logarithmically. The Transformer model reduces the number of operations to a constant level, but this can result in reduced effective resolution. To counteract this, Multi-Head Attention is used.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_2_order_5",
+          "label": "para",
+          "text": "Self-attention, sometimes called intra-attention is an attention mechanism relating different positions\nof a single sequence in order to compute a representation of the sequence. Self-attention has been\nused successfully in a variety of tasks including reading comprehension, abstractive summarization,\ntextual entailment and learning task-independent sentence representations [4, 22, 23, 19] .",
+          "level": -1,
+          "page": 2,
+          "reading_order": 5,
+          "bbox": [
+            122,
+            456,
+            571,
+            505
+          ],
+          "section_number": null,
+          "summary": "Self-attention, also known as intra-attention, is an attention mechanism that connects different positions within a single sequence to generate a representation of the sequence. It has been effectively utilized in various tasks such as reading comprehension, abstractive summarization, textual entailment, and learning task-independent sentence representations. Studies have shown its success in improving performance across a range of natural language processing tasks.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_2_order_6",
+          "label": "para",
+          "text": "End-to-end memory networks are based on a recurrent attention mechanism instead of sequence-\naligned recurrence and have been shown to perform well on simple-language question answering and\nlanguage modeling tasks [28] .",
+          "level": -1,
+          "page": 2,
+          "reading_order": 6,
+          "bbox": [
+            122,
+            510,
+            571,
+            548
+          ],
+          "section_number": null,
+          "summary": "End-to-end memory networks utilize a recurrent attention mechanism instead of sequence-aligned recurrence. They have demonstrated strong performance in tasks such as simple-language question answering and language modeling. This information is supported by reference [28].",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_2_order_7",
+          "label": "para",
+          "text": "To the best of our knowledge, however, the Transformer is the first transduction model relying\nentirely on self-attention to compute representations of its input and output without using sequence-\naligned RNNs or convolution. In the following sections, we will describe the Transformer, motivate\nself-attention and discuss its advantages over models such as [14, 15] and [8] .",
+          "level": -1,
+          "page": 2,
+          "reading_order": 7,
+          "bbox": [
+            114,
+            555,
+            571,
+            603
+          ],
+          "section_number": null,
+          "summary": "The text discusses the Transformer model, which is the first transduction model to use self-attention exclusively for computing input and output representations without relying on sequence-aligned RNNs or convolution. The document will further describe the Transformer, explain the concept of self-attention, and highlight its advantages over other models such as those referenced as [14, 15], and [8].",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        }
+      ]
+    },
+    {
+      "id": "page_2_order_8",
+      "label": "sec",
+      "text": "3 Model Architecture",
+      "level": 1,
+      "page": 2,
+      "reading_order": 8,
+      "bbox": [
+        122,
+        618,
+        257,
+        636
+      ],
+      "section_number": "3",
+      "summary": "The document section on Model Architecture delves into neural sequence transduction models, particularly focusing on the Transformer model's encoder-decoder structure. The encoder converts input symbols into continuous representations, while the decoder generates output symbols based on these representations. The model is auto-regressive, utilizing previously generated symbols for generating the next in the sequence. The Transformer model employs stacked self-attention and fully connected layers in both encoder and decoder stacks. The encoder has 6 layers with multi-head self-attention and position mechanisms, while the decoder has 6 layers with modified self-attention. Attention mechanisms play a crucial role in processing queries, keys, and values for effective information processing. Multi-Head Attention enhances performance by parallel processing with reduced dimensionality. Position-wise Feed-Forward Networks operate independently on each position with linear transformations and ReLU activations. Learned embeddings and softmax functions are used for token representation and probability prediction. Positional Encoding incorporates positional information into the model without recurrence or convolution layers, utilizing sine and cosine functions for encoding. The document emphasizes the importance of attention mechanisms, feed-forward networks, embeddings, and positional encoding in optimizing model performance and capturing diverse information efficiently. Specific numbers mentioned include the 6 layers in encoder and decoder stacks, dimensionality of heads and parameter matrices, and inner-layer dimensionality in feed-forward networks. The section provides technical details on attention computation, feed-forward network structure, embedding weight scaling, and positional encoding choices. The relationships between these components are crucial for understanding the flow of information in the model and enabling effective learning.",
+      "embeddings": [],
+      "children": [
+        {
+          "id": "page_2_order_11",
+          "label": "sub_sec",
+          "text": "3.1 Encoder and Decoder Stacks",
+          "level": 2,
+          "page": 2,
+          "reading_order": 11,
+          "bbox": [
+            122,
+            770,
+            286,
+            780
+          ],
+          "section_number": "3.1",
+          "summary": "In this section, the document discusses the encoder and decoder stacks in The Transformer model. The encoder consists of 6 layers with two sub-layers each, including a multi-head self-attention mechanism and a position mechanism. A fully connected feed-forward network with residual connections and layer normalization is implemented in each sub-layer. The decoder also has 6 layers with three sub-layers, including modified self-attention to prevent positions from attending to subsequent positions. Residual connections and layer normalization are used in both the encoder and decoder. The output dimensions of all sub-layers and embedding layers are 512 to facilitate residual connections. The document also references Figure 1, which shows the model architecture of The Transformer. Key technical details include the use of residual connections, layer normalization, and modified self-attention in the decoder. The relationships between the encoder and decoder stacks are crucial for understanding the flow of information in the model. Specific numbers mentioned include the 6 layers in both the encoder and decoder stacks.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_2_order_12",
+              "label": "para",
+              "text": "Encoder: The encoder is composed of a stack of $N=6$ identical layers. Each layer has two\nsub-layers. The first is a multi-head self-attention mechanism, and the second is a simple, position-",
+              "level": -1,
+              "page": 2,
+              "reading_order": 12,
+              "bbox": [
+                122,
+                793,
+                571,
+                817
+              ],
+              "section_number": null,
+              "summary": "The encoder consists of 6 identical layers, each containing two sub-layers. The first sub-layer is a multi-head self-attention mechanism, while the second sub-layer is a simple position mechanism.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_2_order_13",
+              "label": "foot",
+              "text": "2",
+              "level": -1,
+              "page": 2,
+              "reading_order": 13,
+              "bbox": [
+                343,
+                839,
+                348,
+                851
+              ],
+              "section_number": "2",
+              "summary": "The document contains information related to the foot, specifically labeled as \"2\". The details of the content are not provided in the summary.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_3_order_0",
+              "label": "figure",
+              "text": "Figure 1: The Transformer - model architecture. [IMAGE: ![Figure](figures/attention-is-all-you-need_page_003_figure_000.png)]",
+              "level": -1,
+              "page": 3,
+              "reading_order": 0,
+              "bbox": [
+                203,
+                71,
+                481,
+                448
+              ],
+              "section_number": null,
+              "summary": "The text describes Figure 1, which shows the model architecture of The Transformer. The figure is not described in detail but is accompanied by an image that can be referenced for further information. The architecture of The Transformer is likely a key component of the document and may be important for understanding the content.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": [],
+              "merged_elements": [
+                {
+                  "label": "fig",
+                  "text": "![Figure](figures/attention-is-all-you-need_page_003_figure_000.png)",
+                  "bbox": [
+                    203,
+                    71,
+                    481,
+                    448
+                  ],
+                  "page": 3,
+                  "reading_order": 0
+                },
+                {
+                  "label": "cap",
+                  "text": "Figure 1: The Transformer - model architecture.",
+                  "bbox": [
+                    237,
+                    456,
+                    454,
+                    466
+                  ],
+                  "page": 3,
+                  "reading_order": 1
+                }
+              ],
+              "is_merged": true
+            },
+            {
+              "id": "page_3_order_2",
+              "label": "para",
+              "text": "wise fully connected feed-forward network. We employ a residual connection [10] around each of\nthe two sub-layers, followed by layer normalization [1] . That is, the output of each sub-layer is\n$\\mathrm{LayerNorm}(x+\\mathrm{Sublayer}(x))$ , where $\\mathrm{Sublayer}(x)$ is the function implemented by the sub-layer\nitself. To facilitate these residual connections, all sub-layers in the model, as well as the embedding\nlayers, produce outputs of dimension $d_\\text{model}=512$ .",
+              "level": -1,
+              "page": 3,
+              "reading_order": 2,
+              "bbox": [
+                114,
+                492,
+                571,
+                557
+              ],
+              "section_number": null,
+              "summary": "The text discusses the implementation of a fully connected feed-forward network with residual connections and layer normalization. Each sub-layer in the network is followed by a residual connection and layer normalization, with the output being the result of adding the input to the output of the sub-layer and then applying layer normalization. All sub-layers and embedding layers in the model produce outputs of dimension 512 to facilitate these residual connections.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_3_order_3",
+              "label": "para",
+              "text": "The The decoder is also composed of a stack of $N=6$ identical layers. In addition to the two\nsub-layers in each encoder layer, the decoder inserts a third sub-layer, which performs multi-head\nattention over the output of the encoder stack. Similar to the encoder, we employ residual connections\naround each of the sub-layers, followed by layer normalization. We also modify the self-attention\nsub-layer in the decoder stack to prevent positions from attending to subsequent positions. This\nmasking, combined with fact that the output embeddings are offset by one position, ensures that the\npredictions for position $i$ can depend only on the known outputs at positions less than $i$ .",
+              "level": -1,
+              "page": 3,
+              "reading_order": 3,
+              "bbox": [
+                114,
+                573,
+                571,
+                663
+              ],
+              "section_number": null,
+              "summary": "The decoder in this system consists of a stack of 6 identical layers. Each layer includes three sub-layers - two for performing tasks similar to the encoder and one for multi-head attention over the encoder stack output. Residual connections and layer normalization are used around each sub-layer. The self-attention sub-layer in the decoder is modified to prevent positions from attending to subsequent positions. This masking, along with offsetting output embeddings by one position, ensures that predictions for a certain position only depend on known outputs at positions before it.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        },
+        {
+          "id": "page_3_order_4",
+          "label": "sub_sec",
+          "text": "3.2 Attention",
+          "level": 2,
+          "page": 3,
+          "reading_order": 4,
+          "bbox": [
+            122,
+            680,
+            194,
+            689
+          ],
+          "section_number": "3.2",
+          "summary": "The section on Attention in the document discusses the importance of attention functions in processing queries and key-value pairs to focus on specific information within a dataset. It introduces the Scaled Dot-Product Attention mechanism used in neural network models, explaining how it computes dot products of queries and keys, scales the results, and applies them to values to determine relevance. The section also covers Multi-Head Attention, which enhances performance by projecting queries, keys, and values multiple times with different learned projections for parallel processing. The use of 8 parallel attention layers with reduced dimensionality of $d_k=d_v=d_\\text{model}/h=64 is highlighted for efficient computational cost. The document further explores the applications of attention in the Transformer model, detailing its role in encoder-decoder and self-attention layers for effective information processing and interaction between different model layers. Important technical details include the formula for computing attention, the comparison between additive and dot-product attention functions, and the significance of parameter matrices in multi-head attention. Key numbers mentioned include the dimensionality of heads and parameter matrices. Overall, the section emphasizes the crucial role of attention mechanisms in optimizing model performance and capturing diverse information efficiently.",
+          "embeddings": [],
+          "children": [
+            {
+              "id": "page_3_order_6",
+              "label": "sub_sub_sec",
+              "text": "3.2.1 Scaled Dot-Product Attention",
+              "level": 3,
+              "page": 3,
+              "reading_order": 6,
+              "bbox": [
+                122,
+                770,
+                302,
+                780
+              ],
+              "section_number": "3.2.1",
+              "summary": "In this section, the document discusses the Scaled Dot-Product Attention mechanism used in neural network models, particularly in transformer architectures. This mechanism involves processing queries, keys, and values with dimensions $d_k$ and $d_v by computing dot products of queries and keys, scaling the results, and applying them to the values to determine relevance in input data. The figure illustrates Scaled Dot-Product Attention and Multi-Head Attention components in neural networks. The process involves dividing a query by the square root of a key value and applying a softmax function to obtain weights on values. The attention function is computed on sets of queries, keys, and values organized into matrices, with the formula Attention(Q, K, V) = softmax((QK^T) / sqrt(d_k))V. Additive and dot-product attention functions are compared, with dot-product attention being faster and more space-efficient due to optimized matrix multiplication code. For larger values of $d_k, additive attention outperforms dot product attention without scaling due to the softmax function's small gradients with large dot products. The scaling factor $\\frac{1}{\\sqrt{d_k}}$ addresses this issue.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": [
+                {
+                  "id": "page_3_order_7",
+                  "label": "para",
+                  "text": "We call our particular attention \"Scaled Dot-Product Attention\" (Figure 2). The input consists of\nqueries and keys of dimension $d_k$ , and values of dimension $d_v$ . We compute the dot products of the",
+                  "level": -1,
+                  "page": 3,
+                  "reading_order": 7,
+                  "bbox": [
+                    114,
+                    793,
+                    571,
+                    817
+                  ],
+                  "section_number": null,
+                  "summary": "The text discusses a specific type of attention mechanism called \"Scaled Dot-Product Attention\" which involves inputs of queries, keys, and values with dimensions $d_k$ and $d_v$. The mechanism involves computing dot products of the queries and keys, and then scaling the results before applying them to the values. This process helps in determining the relevance of different elements in the input data.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_4_order_0",
+                  "label": "figure",
+                  "text": "Figure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several\nattention layers running in parallel. [IMAGE: ![Figure](figures/attention-is-all-you-need_page_004_figure_000.png)]",
+                  "level": -1,
+                  "page": 4,
+                  "reading_order": 0,
+                  "bbox": [
+                    167,
+                    71,
+                    544,
+                    277
+                  ],
+                  "section_number": null,
+                  "summary": "The figure shows two components related to attention mechanisms in a neural network model. On the left is Scaled Dot-Product Attention, which is a key component in transformer models for processing input data. On the right is Multi-Head Attention, which involves multiple attention layers working simultaneously to capture different aspects of the input data. This figure visually represents these concepts in the context of the neural network architecture.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": [],
+                  "merged_elements": [
+                    {
+                      "label": "fig",
+                      "text": "![Figure](figures/attention-is-all-you-need_page_004_figure_000.png)",
+                      "bbox": [
+                        167,
+                        71,
+                        544,
+                        277
+                      ],
+                      "page": 4,
+                      "reading_order": 0
+                    },
+                    {
+                      "label": "cap",
+                      "text": "Figure 2: (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consists of several\nattention layers running in parallel.",
+                      "bbox": [
+                        122,
+                        310,
+                        571,
+                        333
+                      ],
+                      "page": 4,
+                      "reading_order": 1
+                    }
+                  ],
+                  "is_merged": true
+                },
+                {
+                  "id": "page_4_order_2",
+                  "label": "para",
+                  "text": "query with all keys, divide each by $\\sqrt{d_k}$ , and apply a softmax function to obtain the weights on the\nvalues.",
+                  "level": -1,
+                  "page": 4,
+                  "reading_order": 2,
+                  "bbox": [
+                    122,
+                    358,
+                    571,
+                    385
+                  ],
+                  "section_number": null,
+                  "summary": "The text describes a process where a query is divided by the square root of a key value, and a softmax function is applied to obtain weights on the values. This process likely relates to a mathematical or computational operation involving queries, keys, and values, where weights are calculated based on the division and softmax function.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_4_order_3",
+                  "label": "para",
+                  "text": "In practice, we compute the attention function on a set of queries simultaneously, packed together\ninto a matrix $Q$ . The keys and values are also packed together into matrices $K$ and $V$ . We compute\nthe matrix of outputs as:\n\\begin{equation}\n    \\mathrm{Attention}(Q, K, V)=\\operatorname{softmax}(\\frac{QK^T}{\\sqrt{d_k}})V\n\\end{equation}",
+                  "level": -1,
+                  "page": 4,
+                  "reading_order": 3,
+                  "bbox": [
+                    122,
+                    393,
+                    571,
+                    483
+                  ],
+                  "section_number": null,
+                  "summary": "The text explains that in practice, the attention function is computed on a set of queries simultaneously, organized into a matrix Q. The keys and values are also organized into matrices K and V. The matrix of outputs is computed using the formula: Attention(Q, K, V) = softmax((QK^T) / sqrt(d_k))V.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_4_order_4",
+                  "label": "para",
+                  "text": "The two most commonly used attention functions are additive attention [2] , and dot-product (multi-\nplicative) attention. Dot-product attention is identical to our algorithm, except for the scaling factor\nof $\\frac{1}{\\sqrt{d_k}}$ . Additive attention computes the compatibility function using a feed-forward network with\na single hidden layer. While the two are similar in theoretical complexity, dot-product attention is\nmuch faster and more space-efficient in practice, since it can be implemented using highly optimized\nmatrix multiplication code.",
+                  "level": -1,
+                  "page": 4,
+                  "reading_order": 4,
+                  "bbox": [
+                    114,
+                    492,
+                    571,
+                    573
+                  ],
+                  "section_number": null,
+                  "summary": "The text discusses two commonly used attention functions: additive attention and dot-product attention. Dot-product attention is similar to the algorithm described, but with a scaling factor of $\\frac{1}{\\sqrt{d_k}}$. Additive attention uses a feed-forward network with a single hidden layer to compute the compatibility function. While both functions have similar theoretical complexity, dot-product attention is faster and more space-efficient in practice due to its implementation using optimized matrix multiplication code.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_4_order_5",
+                  "label": "para",
+                  "text": "While for small values of $d_k$ the two mechanisms perform similarly, additive attention outperforms\ndot product attention without scaling for larger values of $d_k$ [3] . We suspect that for large values of\n$d_k$ , the dot products grow large in magnitude, pushing the softmax function into regions where it has\nextremely small gradients 4 . To counteract this effect, we scale the dot products by $\\frac{1}{\\sqrt{d_k}}$ .",
+                  "level": -1,
+                  "page": 4,
+                  "reading_order": 5,
+                  "bbox": [
+                    114,
+                    579,
+                    571,
+                    630
+                  ],
+                  "section_number": null,
+                  "summary": "Additive attention and dot product attention are two mechanisms used in machine learning. For small values of $d_k$, both mechanisms perform similarly. However, for larger values of $d_k, additive attention outperforms dot product attention without scaling. This is because for large values of $d_k, the dot products become large in magnitude, causing the softmax function to have extremely small gradients. To address this issue, the dot products are scaled by $\\frac{1}{\\sqrt{d_k}}$.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                }
+              ]
+            },
+            {
+              "id": "page_4_order_6",
+              "label": "sub_sub_sec",
+              "text": "3.2.2 Multi-Head Attention",
+              "level": 3,
+              "page": 4,
+              "reading_order": 6,
+              "bbox": [
+                122,
+                645,
+                266,
+                663
+              ],
+              "section_number": "3.2.2",
+              "summary": "Section 3.2.2 discusses Multi-Head Attention, a method that enhances the performance of attention functions by linearly projecting queries, keys, and values multiple times with different learned projections. This approach allows for parallel processing of the projected versions to generate optimized output values. Multi-head attention enables a model to focus on various aspects of input data simultaneously, improving its ability to capture diverse information compared to a single attention head. The dot product of vectors $q$ and $k$ can grow in magnitude due to the independence of their components, as explained in a footnote. The MultiHead function processes queries, keys, and values using multiple heads with different weight matrices, resulting in a concatenated output. Parameter matrices such as $W_i^Q$, $W_i^K$, $W_i^V$, and $W^O play a crucial role in the projection process. The use of 8 parallel attention layers with reduced dimensionality of $d_k=d_v=d_\\text{model}/h=64 allows for efficient computational cost similar to single-head attention with full dimensionality. Key numbers mentioned include the dimensionality of the heads and parameter matrices. This section emphasizes the importance of multi-head attention in optimizing attention mechanisms for improved model performance.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": [
+                {
+                  "id": "page_4_order_7",
+                  "label": "para",
+                  "text": "Instead of performing a single attention function with $d_{\\text{model}}$ -dimensional keys, values and queries,\nwe found it beneficial to linearly project the queries, keys and values $h$ times with different, learned\nlinear projections to $d_k$ , $d_k$ and $d_v$ dimensions, respectively. On each of these projected versions of\nqueries, keys and values we then perform the attention function in parallel, yielding $d_v$ -dimensional\noutput values. These are concatenated and once again projected, resulting in the final values, as\ndepicted in Figure 2 .",
+                  "level": -1,
+                  "page": 4,
+                  "reading_order": 7,
+                  "bbox": [
+                    121,
+                    671,
+                    571,
+                    744
+                  ],
+                  "section_number": null,
+                  "summary": "The text explains a method of performing attention functions by linearly projecting queries, keys, and values multiple times with different learned projections. This is done to optimize the process and improve the output values. The projected versions of queries, keys, and values are processed in parallel to generate output values, which are then concatenated and projected again to produce final values. This approach is illustrated in Figure 2.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_4_order_8",
+                  "label": "para",
+                  "text": "Multi-head attention allows the model to jointly attend to information from different representation\nsubspaces at different positions. With a single attention head, averaging inhibits this.",
+                  "level": -1,
+                  "page": 4,
+                  "reading_order": 8,
+                  "bbox": [
+                    122,
+                    752,
+                    571,
+                    779
+                  ],
+                  "section_number": null,
+                  "summary": "Multi-head attention in a model enables it to focus on various aspects of input data simultaneously by attending to different representation subspaces at different positions. This is more effective than using a single attention head, where averaging can hinder the model's ability to capture diverse information.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_4_order_9",
+                  "label": "fnote",
+                  "text": "${ }^{4}$ To illustrate why the dot products get large, assume that the components of $q$ and $k$ are independent random\nvariables with mean 0 and variance 1 . Then their dot product, $q \\cdot k=\\sum_{i=1}^{d_{k}} q_{i} k_{i}$, has mean 0 and variance $d_{k}$.",
+                  "level": -1,
+                  "page": 4,
+                  "reading_order": 9,
+                  "bbox": [
+                    122,
+                    788,
+                    571,
+                    824
+                  ],
+                  "section_number": null,
+                  "summary": "The text explains that the dot product of two vectors $q$ and $k$, denoted as $q \\cdot k$, can become large due to the independence of their components. Assuming that the components of $q$ and $k$ are independent random variables with mean 0 and variance 1, the dot product will have a mean of 0 and a variance of $d_{k}$, where $d_{k}$ represents the dimensionality of vector $k$. This illustrates how the dot product can grow in magnitude under certain conditions.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_4_order_10",
+                  "label": "foot",
+                  "text": "+",
+                  "level": -1,
+                  "page": 4,
+                  "reading_order": 10,
+                  "bbox": [
+                    342,
+                    842,
+                    348,
+                    851
+                  ],
+                  "section_number": null,
+                  "summary": "The text content is simply a symbol \"+\", which typically represents addition or positivity. It is unclear without further context what specific information or instructions this symbol is referring to in relation to the document.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_5_order_0",
+                  "label": "para",
+                  "text": "$$\\begin{aligned}\n\\operatorname{MultiHead}(Q, K, V) & =\\text { Concat }\\left(\\text { head }_{1}, \\ldots, \\text { head }_{\\mathrm{h}}\\right) W^{O} \\\\\n\\text { where head }_{\\mathrm{i}} & =\\operatorname{Attention}\\left(Q W_{i}^{Q}, K W_{i}^{K}, V W_{i}^{V}\\right)\n\\end{aligned}$$",
+                  "level": -1,
+                  "page": 5,
+                  "reading_order": 0,
+                  "bbox": [
+                    203,
+                    98,
+                    481,
+                    134
+                  ],
+                  "section_number": null,
+                  "summary": "The text describes a MultiHead function that takes in queries (Q), keys (K), and values (V) and outputs a concatenated result using multiple heads. Each head is calculated using an Attention mechanism with different weight matrices for Q, K, and V. The final output is obtained by multiplying the concatenated heads with an output weight matrix.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_5_order_1",
+                  "label": "para",
+                  "text": "Where the projections are parameter matrices $W_i^Q\\in\\mathbb{R}^{d_{\\text{model}}\\times d_k}, W_i^K\\in\\mathbb{R}^{d_{\\text{model}}\\times d_k}, W_i^V\\in\\mathbb{R}^{d_{\\text{model}}\\times d_v}$\nand $W^O\\in\\mathbb{R}^{hd_v\\times d_{\\text{model}}}$ .",
+                  "level": -1,
+                  "page": 5,
+                  "reading_order": 1,
+                  "bbox": [
+                    114,
+                    161,
+                    571,
+                    191
+                  ],
+                  "section_number": null,
+                  "summary": "The text describes parameter matrices used for projections in a model. These matrices include $W_i^Q$ of size $d_{\\text{model}}\\times d_k$, $W_i^K$ of size $d_{\\text{model}}\\times d_k$, $W_i^V$ of size $d_{\\text{model}}\\times d_v$, and $W^O$ of size $hd_v\\times d_{\\text{model}}$. These matrices are essential for the functioning of the model and play a key role in the projection process.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_5_order_2",
+                  "label": "para",
+                  "text": "In this work we employ $h=8$ parallel attention layers, or heads. For each of these we use\n$d_k=d_v=d_\\text{model}/h=64$ . Due to the reduced dimension of each head, the total computational cost\nis similar to that of single-head attention with full dimensionality.",
+                  "level": -1,
+                  "page": 5,
+                  "reading_order": 2,
+                  "bbox": [
+                    122,
+                    197,
+                    571,
+                    234
+                  ],
+                  "section_number": null,
+                  "summary": "The text discusses the use of 8 parallel attention layers, or heads, with each head having a dimensionality of $d_k=d_v=d_\\text{model}/h=64$. This reduced dimensionality allows for a total computational cost similar to that of single-head attention with full dimensionality.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                }
+              ]
+            },
+            {
+              "id": "page_5_order_3",
+              "label": "sub_sub_sec",
+              "text": "3.2.3 Applications of Attention in our Mode",
+              "level": 3,
+              "page": 5,
+              "reading_order": 3,
+              "bbox": [
+                123,
+                250,
+                339,
+                263
+              ],
+              "section_number": "3.2.3",
+              "summary": "In this section, the document discusses the applications of attention in the Transformer model. It highlights three main uses of multi-head attention within the model. The text delves into the attention mechanisms employed in encoder-decoder and self-attention layers in sequence-to-sequence models. In encoder-decoder attention layers, queries originate from the decoder layer, while memory keys and values are sourced from the encoder output. This setup enables every position in the decoder to attend to all positions in the input sequence, mirroring typical encoder-decoder attention mechanisms. Additionally, the encoder features self-attention layers where keys, values, and queries all stem from the same source - the output of the previous layer in the encoder. This configuration allows each position in the encoder to attend to all positions in the preceding layer of the encoder. The discussion provides insights into the intricate workings of attention mechanisms within the Transformer model, showcasing how they facilitate effective information processing and interaction between different layers.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": [
+                {
+                  "id": "page_5_order_4",
+                  "label": "para",
+                  "text": "The Transformer uses multi-head attention in three different ways",
+                  "level": -1,
+                  "page": 5,
+                  "reading_order": 4,
+                  "bbox": [
+                    114,
+                    268,
+                    418,
+                    286
+                  ],
+                  "section_number": null,
+                  "summary": "The Transformer model utilizes multi-head attention in three distinct ways.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": []
+                },
+                {
+                  "id": "page_5_order_5",
+                  "label": "list_group",
+                  "text": "• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer,\nand the memory keys and values come from the output of the encoder. This allows every\nposition in the decoder to attend over all positions in the input sequence. This mimics the\ntypical encoder-decoder attention mechanisms in sequence-to-sequence models such as\n[31, 2, 8] .\n• The encoder contains self-attention layers. In a self-attention layer all of the keys, values\nand queries come from the same place, in this case, the output of the previous layer in the\nencoder. Each position in the encoder can attend to all positions in the previous layer of the\nencoder.",
+                  "level": -1,
+                  "page": 5,
+                  "reading_order": 5,
+                  "bbox": [
+                    149,
+                    295,
+                    571,
+                    358
+                  ],
+                  "section_number": null,
+                  "summary": "The text discusses the attention mechanisms used in encoder-decoder and self-attention layers in sequence-to-sequence models. In encoder-decoder attention layers, queries come from the decoder layer while memory keys and values come from the encoder output, allowing every position in the decoder to attend to all positions in the input sequence. This mimics typical encoder-decoder attention mechanisms. The encoder also contains self-attention layers where keys, values, and queries all come from the same place - the output of the previous layer in the encoder. This allows each position in the encoder to attend to all positions in the previous layer of the encoder.",
+                  "embeddings": [],
+                  "children": [],
+                  "content_elements": [],
+                  "merged_elements": [
+                    {
+                      "label": "list",
+                      "text": "• In \"encoder-decoder attention\" layers, the queries come from the previous decoder layer,\nand the memory keys and values come from the output of the encoder. This allows every\nposition in the decoder to attend over all positions in the input sequence. This mimics the\ntypical encoder-decoder attention mechanisms in sequence-to-sequence models such as\n[31, 2, 8] .",
+                      "bbox": [
+                        149,
+                        295,
+                        571,
+                        358
+                      ],
+                      "page": 5,
+                      "reading_order": 5
+                    },
+                    {
+                      "label": "list",
+                      "text": "• The encoder contains self-attention layers. In a self-attention layer all of the keys, values\nand queries come from the same place, in this case, the output of the previous layer in the\nencoder. Each position in the encoder can attend to all positions in the previous layer of the\nencoder.",
+                      "bbox": [
+                        149,
+                        358,
+                        571,
+                        412
+                      ],
+                      "page": 5,
+                      "reading_order": 6
+                    },
+                    {
+                      "label": "list",
+                      "text": "• Similarly, self-attention layers in the decoder allow each position in the decoder to attend to\nall positions in the decoder up to and including that position. We need to prevent leftward\ninformation flow in the decoder to preserve the auto-regressive property. We implement this\ninside of scaled dot-product attention by masking out (setting to $-\\infty$ ) all values in the input\nof the softmax which correspond to illegal connections. See Figure 2 .",
+                      "bbox": [
+                        149,
+                        412,
+                        571,
+                        476
+                      ],
+                      "page": 5,
+                      "reading_order": 7
+                    }
+                  ],
+                  "is_merged": true
+                }
+              ]
+            }
+          ],
+          "content_elements": [
+            {
+              "id": "page_3_order_5",
+              "label": "para",
+              "text": "An attention function can be described as mapping a query and a set of key-value pairs to an output,\nwhere the query, keys, values, and output are all vectors. The output is computed as a weighted sum\nof the values, where the weight assigned to each value is computed by a compatibility function of the\nquery with the corresponding key.",
+              "level": -1,
+              "page": 3,
+              "reading_order": 5,
+              "bbox": [
+                114,
+                704,
+                571,
+                752
+              ],
+              "section_number": null,
+              "summary": "An attention function is a process that takes a query and a set of key-value pairs as input, with all components being vectors. The output is generated by calculating a weighted sum of the values, where the weight for each value is determined by a compatibility function between the query and the corresponding key. This function helps in focusing on specific information within a dataset by assigning different weights to different values based on their relevance to the query.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        },
+        {
+          "id": "page_5_order_8",
+          "label": "sub_sec",
+          "text": "3.3 Position-wise Feed-Forward Networks",
+          "level": 2,
+          "page": 5,
+          "reading_order": 8,
+          "bbox": [
+            122,
+            492,
+            331,
+            502
+          ],
+          "section_number": "3.3",
+          "summary": "In the section on Position-wise Feed-Forward Networks, the document discusses how fully connected feed-forward networks are used in the encoder and decoder layers alongside attention sub-layers. These networks operate on each position independently and involve two linear transformations with a ReLU activation in between. The formula for the feed-forward network is given as FFN(x) = max(0, xW1 + b1)W2 + b2. While the linear transformations are consistent across positions, they use different parameters in each layer, akin to convolutions with a kernel size of 1. The input and output dimensionality is $d_{\\text{model}}=512$, with an inner-layer dimensionality of $d_{ff}=2048. This section highlights the structure and functionality of feed-forward networks within the context of position-wise processing in the model.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_5_order_9",
+              "label": "para",
+              "text": "In addition to attention sub-layers, each of the layers in our encoder and decoder contains a fully\nconnected feed-forward network, which is applied to each position separately and identically. This\nconsists of two linear transformations with a ReLU activation in between.\n\\begin{equation} \\label{eq:FFN1}\n    \\mathrm{FFN}(x)=\\max(0, xW_1+b_1) W_2+b_2\n\\end{equation}",
+              "level": -1,
+              "page": 5,
+              "reading_order": 9,
+              "bbox": [
+                114,
+                510,
+                571,
+                582
+              ],
+              "section_number": null,
+              "summary": "The encoder and decoder layers in the text contain fully connected feed-forward networks in addition to attention sub-layers. These networks are applied to each position separately and consist of two linear transformations with a ReLU activation in between. The formula for the feed-forward network is shown as FFN(x) = max(0, xW1 + b1)W2 + b2.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_5_order_10",
+              "label": "para",
+              "text": "While the linear transformations are the same across different positions, they use different parameters\nfrom layer to layer. Another way of describing this is as two convolutions with kernel size 1.\nThe dimensionality of input and output is $d_{\\text{model}}=512$ , and the inner-layer has dimensionality\n$d_{ff}=2048$ .",
+              "level": -1,
+              "page": 5,
+              "reading_order": 10,
+              "bbox": [
+                114,
+                591,
+                571,
+                645
+              ],
+              "section_number": null,
+              "summary": "The text explains that although the linear transformations remain consistent across various positions, they utilize different parameters from one layer to another. This can be likened to two convolutions with a kernel size of 1. The input and output dimensionality is $d_{\\text{model}}=512$, while the inner-layer has a dimensionality of $d_{ff}=2048$.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        },
+        {
+          "id": "page_5_order_11",
+          "label": "sub_sec",
+          "text": "3.4 Embeddings and Softma",
+          "level": 2,
+          "page": 5,
+          "reading_order": 11,
+          "bbox": [
+            122,
+            654,
+            266,
+            672
+          ],
+          "section_number": "3.4",
+          "summary": "In this section, the document discusses the use of learned embeddings in sequence transduction models to convert input and output tokens into vectors of dimension $d_{\\text{model}}$. It highlights the utilization of learned linear transformation and softmax function to predict next-token probabilities in the decoder output. The model employs the same weight matrix for both the embedding layers and pre-softmax linear transformation. Furthermore, the weights in the embedding layers are scaled by $\\sqrt{d_{\\text{model}}}$ for optimization purposes. This section emphasizes the importance of embeddings and softmax functions in enhancing the performance of sequence transduction models by efficiently representing tokens and predicting probabilities.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_5_order_12",
+              "label": "para",
+              "text": "Similarly to other sequence transduction models, we use learned embeddings to convert the input\ntokens and output tokens to vectors of dimension $d_{\\text{model}}$ . We also use the usual learned linear transfor-\nmation and softmax function to convert the decoder output to predicted next-token probabilities. In\nour model, we share the same weight matrix between the two embedding layers and the pre-softmax\nlinear transformation, similar to [24] . In the embedding layers, we multiply those weights by $\\sqrt{d_{\\text{model}}}$ .",
+              "level": -1,
+              "page": 5,
+              "reading_order": 12,
+              "bbox": [
+                122,
+                680,
+                571,
+                743
+              ],
+              "section_number": null,
+              "summary": "The text discusses the use of learned embeddings in sequence transduction models to convert input and output tokens into vectors of dimension $d_{\\text{model}}$. It mentions the use of learned linear transformation and softmax function to predict next-token probabilities in the decoder output. The model shares the same weight matrix between the embedding layers and pre-softmax linear transformation. Additionally, the weights in the embedding layers are multiplied by $\\sqrt{d_{\\text{model}}}$ for optimization.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        },
+        {
+          "id": "page_5_order_13",
+          "label": "sub_sec",
+          "text": "3.5 Positional Encoding",
+          "level": 2,
+          "page": 5,
+          "reading_order": 13,
+          "bbox": [
+            122,
+            758,
+            243,
+            770
+          ],
+          "section_number": "3.5",
+          "summary": "The section on Positional Encoding discusses the importance of incorporating positional information into a model that lacks recurrence or convolution layers. Positional encodings are added to input embeddings to provide information about the relative or absolute position of tokens in a sequence, aiding the model in understanding the sequence's structure. The encoder and decoder stacks use positional encodings with the same dimension as the embeddings, allowing them to be combined. The document explores the use of sine and cosine functions with different frequencies for positional encoding, with each dimension corresponding to a sinusoid with varying wavelengths. An experiment comparing learned and sinusoidal positional embeddings showed similar results, with the sinusoidal version chosen for its potential to generalize better to longer sequence lengths. A table in the section provides information on maximum path lengths, complexity, and sequential operations for different layer types in a neural network, including Self-Attention, Recurrent, Convolutional, and Self-Attention with restricted neighborhood. Key technical details include the complexity per layer expressed in terms of sequence length, representation dimension, kernel size, and size of the neighborhood. The relationships between positional encoding choices and model performance are highlighted, with a focus on enabling effective learning to attend by relative positions.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_5_order_14",
+              "label": "para",
+              "text": "Since our model contains no recurrence and no convolution, in order for the model to make use of the\norder of the sequence, we must inject some information about the relative or absolute position of the\ntokens in the sequence. To this end, we add \"positional encodings\" to the input embeddings at the",
+              "level": -1,
+              "page": 5,
+              "reading_order": 14,
+              "bbox": [
+                114,
+                779,
+                571,
+                817
+              ],
+              "section_number": null,
+              "summary": "The model being discussed does not have recurrence or convolution layers, so in order to utilize the sequence order, positional encodings are added to the input embeddings. These positional encodings provide information about the relative or absolute position of tokens in the sequence, allowing the model to understand the sequence's structure.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_5_order_15",
+              "label": "foot",
+              "text": "5",
+              "level": -1,
+              "page": 5,
+              "reading_order": 15,
+              "bbox": [
+                343,
+                839,
+                348,
+                851
+              ],
+              "section_number": "5",
+              "summary": "The document contains information related to a foot, specifically labeled as \"5.\" This likely refers to a specific section or topic related to feet. The content may include details about foot anatomy, conditions, treatments, or other relevant information. Further context or details would be needed to fully understand the significance of this information.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_6_order_0",
+              "label": "table",
+              "text": "Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations\nfor different layer types. $n$ is the sequence length, $d$ is the representation dimension, $k$ is the kernel\nsize of convolutions and $r$ the size of the neighborhood in restricted self-attention. [TABLE: <table><tr><td>Layer Type</td><td>Complexity per Layer</td><td>Sequential Operations</td><td>Maximum Path Length</td></tr><tr><td>Self-Attention</td><td>O ( n 2 · d )</td><td>O (1)</td><td>O (1)</td></tr><tr><td>Recurrent</td><td>O ( n ⋅ d 2 )</td><td>O ( n )</td><td>O ( n )</td></tr><tr><td>Convolutional</td><td>O ( k ⋅ n ⋅ d 2 )</td><td>O (1)</td><td>O ( log k ( n ))</td></tr><tr><td>Self-Attention (restricted)</td><td>O ( r ⋅ n ⋅ d )</td><td>O (1)</td><td>O ( n /r )</td></tr></table>]",
+              "level": -1,
+              "page": 6,
+              "reading_order": 0,
+              "bbox": [
+                131,
+                125,
+                562,
+                206
+              ],
+              "section_number": null,
+              "summary": "The table provides information on maximum path lengths, per-layer complexity, and minimum number of sequential operations for different layer types in a neural network. The layer types included are Self-Attention, Recurrent, Convolutional, and Self-Attention with restricted neighborhood. The complexity per layer is expressed in terms of the sequence length (n), representation dimension (d), kernel size of convolutions (k), and size of the neighborhood in restricted self-attention (r). For Self-Attention, the complexity per layer is O(n^2 * d) with O(1) sequential operations and a maximum path length of O(1). Recurrent layers have a complexity of O(n * d^2) with O(n) sequential operations and a maximum path length of O(n). Convolutional layers have a complexity of O(k * n * d^2) with O(1) sequential operations and a maximum path length of O(log k(n)). Self-Attention with restricted neighborhood has a complexity of O(r * n * d) with O(1) sequential operations and a maximum path length of O(n/r).",
+              "embeddings": [],
+              "children": [],
+              "content_elements": [],
+              "merged_elements": [
+                {
+                  "label": "tab",
+                  "text": "<table><tr><td>Layer Type</td><td>Complexity per Layer</td><td>Sequential Operations</td><td>Maximum Path Length</td></tr><tr><td>Self-Attention</td><td>O ( n 2 · d )</td><td>O (1)</td><td>O (1)</td></tr><tr><td>Recurrent</td><td>O ( n ⋅ d 2 )</td><td>O ( n )</td><td>O ( n )</td></tr><tr><td>Convolutional</td><td>O ( k ⋅ n ⋅ d 2 )</td><td>O (1)</td><td>O ( log k ( n ))</td></tr><tr><td>Self-Attention (restricted)</td><td>O ( r ⋅ n ⋅ d )</td><td>O (1)</td><td>O ( n /r )</td></tr></table>",
+                  "bbox": [
+                    131,
+                    125,
+                    562,
+                    206
+                  ],
+                  "page": 6,
+                  "reading_order": 0
+                },
+                {
+                  "label": "cap",
+                  "text": "Table 1: Maximum path lengths, per-layer complexity and minimum number of sequential operations\nfor different layer types. $n$ is the sequence length, $d$ is the representation dimension, $k$ is the kernel\nsize of convolutions and $r$ the size of the neighborhood in restricted self-attention.",
+                  "bbox": [
+                    121,
+                    80,
+                    571,
+                    116
+                  ],
+                  "page": 6,
+                  "reading_order": 1
+                }
+              ],
+              "is_merged": true
+            },
+            {
+              "id": "page_6_order_2",
+              "label": "para",
+              "text": "bottoms of the encoder and decoder stacks. The positional encodings have the same dimension $d_{\\text{model}}$\nas the embeddings, so that the two can be summed. There are many choices of positional encodings,\nlearned and fixed [8] .",
+              "level": -1,
+              "page": 6,
+              "reading_order": 2,
+              "bbox": [
+                122,
+                241,
+                571,
+                279
+              ],
+              "section_number": null,
+              "summary": "The positional encodings in the encoder and decoder stacks have the same dimension as the embeddings, allowing them to be summed together. There are various options for positional encodings, including both learned and fixed types.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_6_order_3",
+              "label": "para",
+              "text": "In this work, we use sine and cosine functions of different frequencies:\n\\[ \\begin{split} P E_{(pos,2i)} &= sin(pos/10000^{2i/d_{\\text{rsedet}}})\\\\ PE_{(pos,2i+1)} &= cos(pos/10000^{2i/d_{\\text{rsedet}}}) \\end{split} \\]\nwhere $pos$ is the position and $i$ is the dimension. That is, each dimension of the positional encoding\ncorresponds to a sinusoid. The wavelengths form a geometric progression from $2\\pi$ to $10000\\cdot 2\\pi$ . We\nchose this function because we hypothesized it would allow the model to easily learn to attend by\nrelative positions, since for any fixed offset $k$ , $PE_{pos+k}$ can be represented as a linear function of\n$PE_{pos}$ .",
+              "level": -1,
+              "page": 6,
+              "reading_order": 3,
+              "bbox": [
+                121,
+                286,
+                571,
+                439
+              ],
+              "section_number": null,
+              "summary": "The text discusses the use of sine and cosine functions with different frequencies in positional encoding. Each dimension of the positional encoding corresponds to a sinusoid, with wavelengths ranging from $2\\pi$ to $10000\\cdot 2\\pi$. This choice of function is based on the hypothesis that it would enable the model to effectively learn to attend by relative positions, as any fixed offset $k$ can be represented as a linear function of the positional encoding.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_6_order_4",
+              "label": "para",
+              "text": "We also experimented with using learned positional embeddings [8] instead, and found that the two\nversions produced nearly identical results (see Table 3 row (E)). We chose the sinusoidal version\nbecause it may allow the model to extrapolate to sequence lengths longer than the ones encountered\nduring training.",
+              "level": -1,
+              "page": 6,
+              "reading_order": 4,
+              "bbox": [
+                114,
+                439,
+                571,
+                492
+              ],
+              "section_number": null,
+              "summary": "The text discusses an experiment where learned positional embeddings were compared to sinusoidal positional embeddings. It was found that both versions produced similar results, but the sinusoidal version was chosen because it may allow the model to generalize better to longer sequence lengths not encountered during training.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        }
+      ],
+      "content_elements": [
+        {
+          "id": "page_2_order_9",
+          "label": "para",
+          "text": "Most competitive neural sequence transduction models have an encoder-decoder structure [5, 2, 29] .\nHere, the encoder maps an input sequence of symbol representations $(x_1,...,x_n)$ to a sequence\nof continuous representations $\\mathbf{z}=(z_1,...,z_n)$ . Given $\\mathbf{z}$ , the decoder then generates an output\nsequence $(y_1,...,y_m)$ of symbols one element at a time. At each step the model is auto-regressive\n[9] , consuming the previously generated symbols as additional input when generating the next.",
+          "level": -1,
+          "page": 2,
+          "reading_order": 9,
+          "bbox": [
+            114,
+            645,
+            571,
+            711
+          ],
+          "section_number": null,
+          "summary": "The text discusses neural sequence transduction models that typically follow an encoder-decoder structure. In this structure, the encoder converts an input sequence of symbol representations into continuous representations, while the decoder generates an output sequence of symbols based on these continuous representations. The model is auto-regressive, meaning it uses previously generated symbols as additional input when generating the next symbol in the sequence.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_2_order_10",
+          "label": "para",
+          "text": "The Transformer follows this overall architecture using stacked self-attention and point-wise, fully\nconnected layers for both the encoder and decoder, shown in the left and right halves of Figure 1 ,\nrespectively.",
+          "level": -1,
+          "page": 2,
+          "reading_order": 10,
+          "bbox": [
+            114,
+            716,
+            571,
+            754
+          ],
+          "section_number": null,
+          "summary": "The Transformer model utilizes stacked self-attention and point-wise, fully connected layers in both the encoder and decoder. This architecture is depicted in Figure 1, with the encoder on the left and the decoder on the right.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        }
+      ]
+    },
+    {
+      "id": "page_6_order_5",
+      "label": "sec",
+      "text": "4 Why Self-Attention",
+      "level": 1,
+      "page": 6,
+      "reading_order": 5,
+      "bbox": [
+        121,
+        510,
+        257,
+        525
+      ],
+      "section_number": "4",
+      "summary": "The section discusses the rationale behind using self-attention layers in neural networks for sequence transduction tasks, comparing them to recurrent and convolutional layers. Three key considerations for using self-attention are highlighted, including computational complexity and the efficiency of parallelization. The importance of path length between long-range dependencies in learning is emphasized, with self-attention proving faster for shorter sequences. The document introduces a method to increase the maximum path length in self-attention layers. Comparisons are made between the computational complexity of self-attention and convolutional layers, with the former being more efficient for smaller sequence lengths. The use of separable convolutions to reduce complexity is also discussed. Additionally, self-attention is noted for creating more interpretable models, with attention distributions showcasing different tasks performed by individual heads. The section concludes with examples illustrating the syntactic and semantic structure of sentences. The content includes technical details such as computational complexities, path lengths, and model structures, providing a comprehensive understanding of the benefits and applications of self-attention in neural networks.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": [
+        {
+          "id": "page_6_order_6",
+          "label": "para",
+          "text": "In this section we compare various aspects of self-attention layers to the recurrent and convolu-\ntional layers commonly used for mapping one variable-length sequence of symbol representations\n$(x_1, ..., x_n)$ to another sequence of equal length $(z_1, ..., z_n)$ , with $x_i, z_i \\in \\mathbb{R}^d$ , such as a hidden\nlayer in a typical sequence transduction encoder or decoder. Motivating our use of self-attention we\nconsider three desiderata.",
+          "level": -1,
+          "page": 6,
+          "reading_order": 6,
+          "bbox": [
+            121,
+            537,
+            571,
+            600
+          ],
+          "section_number": null,
+          "summary": "The text discusses the comparison between self-attention layers and recurrent/convolutional layers in mapping variable-length sequences of symbol representations. It highlights the use of self-attention in sequence transduction tasks and introduces three key considerations that motivate its use.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_6_order_7",
+          "label": "para",
+          "text": "One is the total computational complexity per layer. Another is the amount of computation that can\nbe parallelized, as measured by the minimum number of sequential operations required.",
+          "level": -1,
+          "page": 6,
+          "reading_order": 7,
+          "bbox": [
+            122,
+            608,
+            571,
+            631
+          ],
+          "section_number": null,
+          "summary": "The text discusses two important factors in computational complexity for each layer: the total computational complexity and the level of parallelization possible. The total computational complexity refers to the overall amount of computation required per layer, while the level of parallelization is determined by the minimum number of sequential operations needed. Both factors are crucial in understanding the efficiency and performance of a computational system.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_6_order_8",
+          "label": "para",
+          "text": "The third is the path length between long-range dependencies in the network. Learning long-range\ndependencies is a key challenge in many sequence transduction tasks. One key factor affecting the\nability to learn such dependencies is the length of the paths forward and backward signals have to\ntraverse in the network. The shorter these paths between any combination of positions in the input\nand output sequences, the easier it is to learn long-range dependencies [11] . Hence we also compare\nthe maximum path length between any two input and output positions in networks composed of the\ndifferent layer types.",
+          "level": -1,
+          "page": 6,
+          "reading_order": 8,
+          "bbox": [
+            121,
+            636,
+            571,
+            725
+          ],
+          "section_number": null,
+          "summary": "The text discusses the importance of path length between long-range dependencies in a network for learning in sequence transduction tasks. It explains that shorter paths between input and output positions make it easier to learn long-range dependencies. The document also compares the maximum path length between input and output positions in networks with different layer types.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_6_order_9",
+          "label": "para",
+          "text": "As noted in Table 1 , a self-attention layer connects all positions with a constant number of sequentially\nexecuted operations, whereas a recurrent layer requires $O(n)$ sequential operations. In terms of\ncomputational complexity, self-attention layers are faster than recurrent layers when the sequence\nlength $n$ is smaller than the representation dimensionality $d$ , which is most often the case with\nsentence representations used by state-of-the-art models in machine translations, such as word-piece\n[31] and byte-pair [25] representations. To improve computational performance for tasks involving\nvery long sequences, self-attention could be restricted to considering only a neighborhood of size $r$ in",
+          "level": -1,
+          "page": 6,
+          "reading_order": 9,
+          "bbox": [
+            121,
+            731,
+            571,
+            815
+          ],
+          "section_number": null,
+          "summary": "The text discusses the computational complexity of self-attention layers compared to recurrent layers in neural networks. It points out that self-attention layers are faster when the sequence length is smaller than the representation dimensionality. This is often the case with sentence representations used in machine translation models. To improve performance with very long sequences, self-attention can be limited to considering only a neighborhood of a certain size.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_6_order_10",
+          "label": "foot",
+          "text": "的",
+          "level": -1,
+          "page": 6,
+          "reading_order": 10,
+          "bbox": [
+            344,
+            840,
+            348,
+            851
+          ],
+          "section_number": null,
+          "summary": "The text content is a single Chinese character \"的\" which means \"of\" or \"belonging to\" in English. This character is commonly used in the Chinese language to indicate possession or association. It is a fundamental character and is frequently used in written and spoken Chinese.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_7_order_0",
+          "label": "para",
+          "text": "the input sequence centered around the respective output position. This would increase the maximum\npath length to $O(n/r)$ . We plan to investigate this approach further in future work.",
+          "level": -1,
+          "page": 7,
+          "reading_order": 0,
+          "bbox": [
+            122,
+            80,
+            571,
+            107
+          ],
+          "section_number": null,
+          "summary": "The text discusses a method of centering the input sequence around the output position to increase the maximum path length to $O(n/r)$. The author plans to explore this approach further in future research.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_7_order_1",
+          "label": "para",
+          "text": "A single convolutional layer with kernel width $k<n$ does not connect all pairs of input and output\npositions. Doing so requires a stack of $O(n/k)$ convolutional layers in the case of contiguous kernels,\nor $O(log_k(n))$ in the case of dilated convolutions [15] , increasing the length of the longest paths\nbetween any two positions in the network. Convolutional layers are generally more expensive than\nrecurrent layers, by a factor of $k$ . Separable convolutions [6] , however, decrease the complexity\nconsiderably, to $O(k\\cdot n\\cdot d+n\\cdot d^2)$ . Even with $k=n$ , however, the complexity of a separable\nconvolution is equal to the combination of a self-attention layer and a point-wise feed-forward layer,\nthe approach we take in our model.",
+          "level": -1,
+          "page": 7,
+          "reading_order": 1,
+          "bbox": [
+            114,
+            115,
+            571,
+            215
+          ],
+          "section_number": null,
+          "summary": "A single convolutional layer with a kernel width less than the input size does not connect all pairs of input and output positions. To achieve this, a stack of O(n/k) convolutional layers is needed for contiguous kernels, or O(log_k(n)) for dilated convolutions. Convolutional layers are more expensive than recurrent layers by a factor of k, but separable convolutions reduce complexity to O(k*n*d + n*d^2). Even with k=n, the complexity of a separable convolution is equivalent to a self-attention layer and a point-wise feed-forward layer. This approach is taken in the model discussed.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_7_order_2",
+          "label": "para",
+          "text": "As side benefit, self-attention could yield more interpretable models. We inspect attention distributions\nfrom our models and present and discuss examples in the appendix. Not only do individual attention\nheads clearly learn to perform different tasks, many appear to exhibit behavior related to the syntactic\nand semantic structure of the sentences.",
+          "level": -1,
+          "page": 7,
+          "reading_order": 2,
+          "bbox": [
+            121,
+            215,
+            571,
+            268
+          ],
+          "section_number": null,
+          "summary": "Self-attention in models can lead to more interpretable models. The attention distributions in the models show that individual attention heads are able to perform different tasks and exhibit behavior related to the syntactic and semantic structure of sentences. Examples are presented and discussed in the appendix.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        }
+      ]
+    },
+    {
+      "id": "page_7_order_3",
+      "label": "sec",
+      "text": "5 Training",
+      "level": 1,
+      "page": 7,
+      "reading_order": 3,
+      "bbox": [
+        122,
+        286,
+        194,
+        304
+      ],
+      "section_number": "5",
+      "summary": "The training section of the document details the training regime for machine translation models, focusing on data preparation, model selection, hyperparameter tuning, and evaluation. It discusses the use of specific datasets, such as the WMT 2014 English-German and English-French datasets, with varying sentence pairs. Batching is done based on sequence length for efficient training. Hardware and schedule information reveal the use of NVIDIA P100 GPUs for training, with different training times for base and larger models. The Adam optimizer with specific parameters and a learning rate schedule is employed to optimize training. Regularization techniques like dropout and label smoothing are used to improve model performance. Various models are compared based on BLEU scores, with ensemble models generally outperforming individual models. The document provides insights into the computational resources, training processes, and model performance metrics for machine translation tasks.",
+      "embeddings": [],
+      "children": [
+        {
+          "id": "page_7_order_5",
+          "label": "sub_sec",
+          "text": "5.1 Training Data and Batching",
+          "level": 2,
+          "page": 7,
+          "reading_order": 5,
+          "bbox": [
+            122,
+            340,
+            284,
+            358
+          ],
+          "section_number": "5.1",
+          "summary": "The section discusses the training data and batching process for machine translation models, specifically using the WMT 2014 English-German dataset with 4.5 million sentence pairs and the English-French dataset with 36 million sentences. The text highlights the use of byte-pair encoding with a shared vocabulary of 37,000 tokens for English-German translation and a 32,000 word-piece vocabulary for English-French translation. Batching of sentence pairs is done based on approximate sequence length, with each training batch containing around 25,000 source tokens and 25,000 target tokens. This approach ensures efficient training and optimization of the machine translation models.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_7_order_6",
+              "label": "para",
+              "text": "We trained on the standard WMT 2014 English-German dataset consisting of about 4.5 million\nsentence pairs. Sentences were encoded using byte-pair encoding [3] , which has a shared source-\ntarget vocabulary of about 37000 tokens. For English-French, we used the significantly larger WMT\n2014 English-French dataset consisting of 36M sentences and split tokens into a 32000 word-piece\nvocabulary [31] . Sentence pairs were batched together by approximate sequence length. Each training\nbatch contained a set of sentence pairs containing approximately 25000 source tokens and 25000\ntarget tokens.",
+              "level": -1,
+              "page": 7,
+              "reading_order": 6,
+              "bbox": [
+                114,
+                367,
+                571,
+                456
+              ],
+              "section_number": null,
+              "summary": "The text discusses the training process for machine translation models using the WMT 2014 English-German dataset with 4.5 million sentence pairs. Sentences were encoded using byte-pair encoding with a shared vocabulary of 37,000 tokens. For English-French translation, a larger dataset of 36 million sentences was used with a 32,000 word-piece vocabulary. Sentence pairs were batched based on approximate sequence length, with each training batch containing around 25,000 source tokens and 25,000 target tokens.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        },
+        {
+          "id": "page_7_order_7",
+          "label": "sub_sec",
+          "text": "5.2 Hardware and Schedule",
+          "level": 2,
+          "page": 7,
+          "reading_order": 7,
+          "bbox": [
+            122,
+            471,
+            266,
+            483
+          ],
+          "section_number": "5.2",
+          "summary": "In this section, the hardware and schedule used for training the models are discussed. The models were trained on a single machine equipped with 8 NVIDIA P100 GPUs. The base models had a training step time of 0.4 seconds and were trained for 100,000 steps, totaling 12 hours of training. On the other hand, the larger models had a training step time of 1.0 seconds and were trained for 300,000 steps, which took approximately 3.5 days to complete. This information provides insight into the computational resources and time required for training the models effectively.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_7_order_8",
+              "label": "para",
+              "text": "We trained our models on one machine with 8 NVIDIA P100 GPUs. For our base models using\nthe hyperparameters described throughout the paper, each training step took about 0.4 seconds. We\ntrained the base models for a total of 100,000 steps or 12 hours. For our big models,(described on the\nbottom line of table 3 ), step time was 1.0 seconds. The big models were trained for 300,000 steps\n(3.5 days).",
+              "level": -1,
+              "page": 7,
+              "reading_order": 8,
+              "bbox": [
+                114,
+                492,
+                571,
+                555
+              ],
+              "section_number": null,
+              "summary": "The models were trained on one machine with 8 NVIDIA P100 GPUs. The base models took 0.4 seconds per training step and were trained for 100,000 steps or 12 hours. The big models, with a step time of 1.0 seconds, were trained for 300,000 steps or 3.5 days.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        },
+        {
+          "id": "page_7_order_9",
+          "label": "sub_sec",
+          "text": "5.3 Optimizer",
+          "level": 2,
+          "page": 7,
+          "reading_order": 9,
+          "bbox": [
+            122,
+            572,
+            197,
+            583
+          ],
+          "section_number": "5.3",
+          "summary": "The section discusses the use of the Adam optimizer with specific parameters ($\\beta_1=0.9$, $\\beta_2=0.98$, $\\epsilon=10^{-9}$) in a training scenario. The learning rate is adjusted during training using a formula that incorporates the model dimensionality ($d_{\\text{model}}$), the current step number, and a warm-up step parameter. The formula for the learning rate is provided as $lrate=d_{\\text{model}}^{-0.5}\\cdot min(step\\_num^{-0.5}, step\\_num\\cdot warmup\\_steps^{-1.5}$. A learning rate schedule is explained where the learning rate is increased linearly for the first $warmup\\_steps$ training steps and then decreased proportionally to the inverse square root of the step number. In this specific case, the value of $warmup\\_steps$ is set to 4000. This approach aims to optimize the training process by adjusting the learning rate based on the model dimensionality and training progress, ultimately improving model performance.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_7_order_10",
+              "label": "para",
+              "text": "We used the Adam optimizer with $\\beta_1=0.9$ , $\\beta_2=0.98$ and $\\epsilon=10^{-9}$ . We varied the learning\nrate over the course of training, according to the formula:\n$$lrate=d_{\\text{model}}^{-0.5}\\cdot min(step\\_num^{-0.5}, step\\_num\\cdot warmup\\_steps^{-1.5})\\eqno{(3)}$$",
+              "level": -1,
+              "page": 7,
+              "reading_order": 10,
+              "bbox": [
+                114,
+                591,
+                571,
+                654
+              ],
+              "section_number": null,
+              "summary": "The text discusses the use of the Adam optimizer with specific parameters ($\\beta_1=0.9$, $\\beta_2=0.98$, $\\epsilon=10^{-9}$) in a training scenario. The learning rate is adjusted during training using a formula that incorporates the model dimensionality ($d_{\\text{model}}$), the current step number, and a warm-up step parameter. The formula for the learning rate is provided as $lrate=d_{\\text{model}}^{-0.5}\\cdot min(step\\_num^{-0.5}, step\\_num\\cdot warmup\\_steps^{-1.5})$.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_7_order_11",
+              "label": "para",
+              "text": "This corresponds to increasing the learning rate linearly for the first $warmup\\_steps$ training steps,\nand decreasing it thereafter proportionally to the inverse square root of the step number. We used\n$warmup\\_steps=4000$ .",
+              "level": -1,
+              "page": 7,
+              "reading_order": 11,
+              "bbox": [
+                114,
+                663,
+                571,
+                700
+              ],
+              "section_number": null,
+              "summary": "The text explains a learning rate schedule where the learning rate is increased linearly for the first $warmup\\_steps$ training steps and then decreased proportionally to the inverse square root of the step number. In this specific case, the value of $warmup\\_steps$ is set to 4000.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        },
+        {
+          "id": "page_7_order_12",
+          "label": "sub_sec",
+          "text": "5.4 Regularization",
+          "level": 2,
+          "page": 7,
+          "reading_order": 12,
+          "bbox": [
+            122,
+            716,
+            221,
+            729
+          ],
+          "section_number": "5.4",
+          "summary": "Regularization techniques are crucial during training, with three types being utilized. Dropout is applied to sub-layers and embeddings in the encoder and decoder stacks with a rate of 0.1. A comparison table of various models for translation tasks in EN-DE and EN-FR language pairs shows BLEU scores ranging from 23.75 to 28.4, with the Transformer (big) model achieving the highest score. The training costs vary, with the Transformer (big) model having the highest at 2.3 x 10^19 FLOPs. Ensemble models generally outperform individual models, with the ConvS2S Ensemble model having a BLEU score of 26.36 for EN-DE and 41.29 for EN-FR. Label smoothing with $\\epsilon_{ls}=0.1$ during training negatively impacted perplexity but improved accuracy and BLEU score by making the model less confident in its predictions. This led to better overall performance in terms of accuracy and language evaluation metrics.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_7_order_13",
+              "label": "para",
+              "text": "We employ three types of regularization during training",
+              "level": -1,
+              "page": 7,
+              "reading_order": 13,
+              "bbox": [
+                114,
+                741,
+                373,
+                752
+              ],
+              "section_number": null,
+              "summary": "Three types of regularization are utilized during training.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_7_order_14",
+              "label": "para",
+              "text": "We Dropout We apply dropout [27] to the output of each sub-layer, before it is added to the\nsub-layer input and normalized. In addition, we apply dropout to the sums of the embeddings and the\npositional encodings in both the encoder and decoder stacks. For the base model, we use a rate of\n$P_{drop}=0.1$ .",
+              "level": -1,
+              "page": 7,
+              "reading_order": 14,
+              "bbox": [
+                122,
+                769,
+                571,
+                816
+              ],
+              "section_number": null,
+              "summary": "Dropout is applied to the output of each sub-layer in a model before it is added to the input and normalized. Dropout is also applied to the sums of embeddings and positional encodings in both the encoder and decoder stacks. The base model uses a dropout rate of 0.1.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_8_order_0",
+              "label": "tab",
+              "text": "<table><tr><td rowspan=\"2\">Model</td><td colspan=\"2\">BLEU</td><td colspan=\"2\">Training Cost (FLOPs)</td></tr><tr><td>EN-DE</td><td>EN-FR</td><td>EN-DE</td><td>EN-FR</td></tr><tr><td>ByteNet [15]</td><td>23.75</td><td></td><td></td><td></td></tr><tr><td>Deep-Att + PosUnk [32]</td><td></td><td>39.2</td><td></td><td>1.0 · 10 20</td></tr><tr><td>GNMT + RL [31]</td><td>24.6</td><td>39.92</td><td>2.3 · 10 19</td><td>1.4 · 10 20</td></tr><tr><td>ConvS2S [8]</td><td>25.16</td><td>40.46</td><td>9.6 · 10 18</td><td>1.5 · 10 20</td></tr><tr><td>MoE [26]</td><td>26.03</td><td>40.56</td><td>2.0 · 10 19</td><td>1.2 · 10 20</td></tr><tr><td>Deep-Att + PosUnk Ensemble [32]</td><td></td><td>40.4</td><td></td><td>8.0 · 10 20</td></tr><tr><td>GNMT + RL Ensemble [31]</td><td>26.30</td><td>41.16</td><td>1.8 · 10 20</td><td>1.1 · 10 21</td></tr><tr><td>ConvS2S Ensemble [8]</td><td>26.36</td><td>41.29</td><td>7.7 · 10 19</td><td>1.2 · 10 21</td></tr><tr><td>Transformer (base model)</td><td>27.3</td><td>38.1</td><td colspan=\"2\">3.3 · 10 18</td></tr><tr><td>Transformer (big)</td><td>28.4</td><td>41.0</td><td colspan=\"2\">2.3 · 10 19</td></tr></table>",
+              "level": -1,
+              "page": 8,
+              "reading_order": 0,
+              "bbox": [
+                146,
+                92,
+                544,
+                277
+              ],
+              "section_number": null,
+              "summary": "The table provides a comparison of different models based on their BLEU scores and training costs measured in FLOPs for translation tasks in English-German (EN-DE) and English-French (EN-FR) language pairs. The models include ByteNet, Deep-Att + PosUnk, GNMT + RL, ConvS2S, MoE, Deep-Att + PosUnk Ensemble, GNMT + RL Ensemble, ConvS2S Ensemble, Transformer (base model), and Transformer (big). The BLEU scores range from 23.75 to 28.4, with the Transformer (big) model achieving the highest score. The training costs vary significantly among the models, with the Transformer (big) model having the highest cost at 2.3 x 10^19 FLOPs. The ensemble models generally perform better than individual models, with the ConvS2S Ensemble model having a BLEU score of 26.36 for EN-DE and 41.29 for EN-FR.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_8_order_2",
+              "label": "para",
+              "text": "During Smoothing During training, we employed label smoothing of value $\\epsilon_{ls}=0.1$ [30] . This\nhurts perplexity, as the model learns to be more unsure, but improves accuracy and BLEU score.",
+              "level": -1,
+              "page": 8,
+              "reading_order": 2,
+              "bbox": [
+                122,
+                304,
+                571,
+                331
+              ],
+              "section_number": null,
+              "summary": "During training, label smoothing with a value of $\\epsilon_{ls}=0.1$ was used, which negatively impacted perplexity but improved accuracy and BLEU score. This technique made the model less confident in its predictions, leading to better overall performance in terms of accuracy and language evaluation metrics.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        }
+      ],
+      "content_elements": [
+        {
+          "id": "page_7_order_4",
+          "label": "para",
+          "text": "This section describes the training regime for our models.",
+          "level": -1,
+          "page": 7,
+          "reading_order": 4,
+          "bbox": [
+            123,
+            313,
+            382,
+            331
+          ],
+          "section_number": null,
+          "summary": "The document outlines the training regime for the models used in the project. It includes information on the specific methods and techniques used to train the models effectively. This section likely covers the process of data preparation, model selection, hyperparameter tuning, and evaluation to ensure the models are accurate and reliable.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        }
+      ]
+    },
+    {
+      "id": "page_8_order_3",
+      "label": "sec",
+      "text": "6 Results",
+      "level": 1,
+      "page": 8,
+      "reading_order": 3,
+      "bbox": [
+        122,
+        349,
+        185,
+        367
+      ],
+      "section_number": "6",
+      "summary": "The Results section of the document covers two main subsections: Machine Translation and Model Variations. In the Machine Translation section, the performance of big transformer models in English-to-German and English-to-French translation tasks is discussed. The English-to-German model achieved a BLEU score of 28.4, surpassing previous models by more than $2.0 BLEU, while the English-to-French model achieved a BLEU score of 41.0 with lower training costs. The methodology for creating base and big models is detailed, including training techniques like averaged checkpoints, beam search, and maximum output length settings. The section also compares translation quality and training costs of different model architectures, emphasizing the importance of efficient training methods. In the Model Variations section, the impact of different components of the Transformer model on translation performance is evaluated. Variations were made to the base model, showing that single-head attention performs slightly worse than the best setting, and too many heads can decrease quality. The study discusses factors like attention key size, model size, dropout, and positional encoding on model quality, with larger models performing better and dropout being effective in preventing overfitting. The use of learned positional embeddings yields similar outcomes to the base model. Specific data, such as BLEU scores, TFLOPS values for GPU models, and variations in Transformer architecture configurations, are provided to support the findings. Overall, the section highlights the superior performance of transformer models in translation tasks and the importance of efficient training methods in achieving high quality results.",
+      "embeddings": [],
+      "children": [
+        {
+          "id": "page_8_order_4",
+          "label": "sub_sec",
+          "text": "6.1 Machine Translation",
+          "level": 2,
+          "page": 8,
+          "reading_order": 4,
+          "bbox": [
+            123,
+            382,
+            248,
+            394
+          ],
+          "section_number": "6.1",
+          "summary": "The section on machine translation discusses the performance of big transformer models in English-to-German and English-to-French translation tasks. The English-to-German model achieved a BLEU score of 28.4, outperforming previous models by more than $2.0 BLEU, while the English-to-French model achieved a BLEU score of 41.0 with significantly lower training costs. The methodology for creating base and big models is described, including the use of averaged checkpoints, beam search with specific hyperparameters, and maximum output length settings. The text also compares translation quality and training costs of different model architectures, estimating the number of floating point operations used for training. Key technical details include training time, GPU usage, and floating-point capacity. The findings highlight the superior performance of the transformer models and the importance of efficient training methods in achieving high translation quality.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_8_order_5",
+              "label": "para",
+              "text": "On the WMT 2014 English-to-German translation task, the big transformer model (Transformer (big)\nin Table 2 ) outperforms the best previously reported models (including ensembles) by more than $2.0$\nBLEU, establishing a new state-of-the-art BLEU score of $28.4$ . The configuration of this model is\nlisted in the bottom line of Table 3 . Training took $3.5$ days on $8$ P100 GPUs. Even our base model\nsurpasses all previously published models and ensembles, at a fraction of the training cost of any of\nthe competitive models.",
+              "level": -1,
+              "page": 8,
+              "reading_order": 5,
+              "bbox": [
+                122,
+                403,
+                571,
+                478
+              ],
+              "section_number": null,
+              "summary": "The big transformer model on the WMT 2014 English-to-German translation task achieved a new state-of-the-art BLEU score of 28.4, outperforming previous models by more than $2.0 BLEU. The model's configuration is listed in Table 3, and training took 3.5 days on 8 P100 GPUs. Even the base model of this transformer outperformed all previously published models and ensembles at a lower training cost.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_8_order_6",
+              "label": "para",
+              "text": "On the WMT 2014 English-to-French translation task, our big model achieves a BLEU score of $41.0$ ,\noutperforming all of the previously published single models, at less than $1/4$ the training cost of the\nprevious state-of-the-art model. The Transformer (big) model trained for English-to-French used\ndropout rate $P_{drop}=0.1$ , instead of $0.3$ .",
+              "level": -1,
+              "page": 8,
+              "reading_order": 6,
+              "bbox": [
+                114,
+                483,
+                571,
+                537
+              ],
+              "section_number": null,
+              "summary": "The big model used in the WMT 2014 English-to-French translation task achieved a BLEU score of 41.0, surpassing all previously published single models. This was accomplished with less than 1/4 of the training cost of the previous state-of-the-art model. The Transformer (big) model trained for English-to-French utilized a dropout rate of 0.1 instead of the previously used 0.3.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_8_order_7",
+              "label": "para",
+              "text": "For the base models, we used a single model obtained by averaging the last 5 checkpoints, which\nwere written at 10-minute intervals. For the big models, we averaged the last 20 checkpoints. We\nused beam search with a beam size of $4$ and length penalty $\\alpha=0.6$ [31] . These hyperparameters\nwere chosen after experimentation on the development set. We set the maximum output length during\ninference to input length + $50$ , but terminate early when possible [31] .",
+              "level": -1,
+              "page": 8,
+              "reading_order": 7,
+              "bbox": [
+                114,
+                537,
+                571,
+                602
+              ],
+              "section_number": null,
+              "summary": "The text describes the methodology used for creating base and big models for a project. For base models, the last 5 checkpoints were averaged, written at 10-minute intervals, while for big models, the last 20 checkpoints were averaged. Beam search with a beam size of 4 and length penalty of 0.6 was used. These hyperparameters were selected after experimentation on the development set. The maximum output length during inference was set to input length + 50, but early termination was allowed when possible.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_8_order_8",
+              "label": "para",
+              "text": "Table 2 summarizes our results and compares our translation quality and training costs to other model\narchitectures from the literature. We estimate the number of floating point operations used to train a\nmodel by multiplying the training time, the number of GPUs used, and an estimate of the sustained\nsingle-precision floating-point capacity of each GPU $^5$ .",
+              "level": -1,
+              "page": 8,
+              "reading_order": 8,
+              "bbox": [
+                114,
+                609,
+                571,
+                657
+              ],
+              "section_number": null,
+              "summary": "The text discusses a comparison of translation quality and training costs of a model architecture to other models in the literature. The authors estimate the number of floating point operations used to train a model by multiplying the training time, number of GPUs used, and the single-precision floating-point capacity of each GPU. This method allows for a comprehensive comparison of training costs and translation quality across different model architectures.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        },
+        {
+          "id": "page_8_order_9",
+          "label": "sub_sec",
+          "text": "6.2 Model Variations",
+          "level": 2,
+          "page": 8,
+          "reading_order": 9,
+          "bbox": [
+            122,
+            672,
+            230,
+            689
+          ],
+          "section_number": "6.2",
+          "summary": "In the section on Model Variations, the document evaluates the impact of different components of the Transformer model on English-to-German translation performance. Variations were made to the base model, including changes in attention heads and dimensions, while keeping computation constant. The study found that single-head attention performs 0.9 BLEU worse than the best setting, and too many heads can also decrease quality. The TFLOPS values for different GPU models are provided, indicating processing power. A table presents variations in Transformer architecture configurations for translation tasks, showing differences in model size, feed-forward dimension, layers, attention heads, dropout rate, and more. The impact of factors like attention key size, model size, dropout, and positional encoding on model quality is discussed, with larger models performing better and dropout being effective in preventing overfitting. The use of learned positional embeddings yields similar outcomes to the base model. The data from the newstest2013 development set is used to measure performance, with results detailed in Table 3 and further explained in the document.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": [
+            {
+              "id": "page_8_order_10",
+              "label": "para",
+              "text": "To evaluate the importance of different components of the Transformer, we varied our base model\nin different ways, measuring the change in performance on English-to-German translation on the\ndevelopment set, newstest2013. We used beam search as described in the previous section, but no\ncheckpoint averaging. We present these results in Table 3 .",
+              "level": -1,
+              "page": 8,
+              "reading_order": 10,
+              "bbox": [
+                114,
+                698,
+                571,
+                752
+              ],
+              "section_number": null,
+              "summary": "The text discusses an evaluation of the importance of different components of the Transformer model by making variations to the base model and measuring the impact on English-to-German translation performance using the newstest2013 development set. Beam search was utilized without checkpoint averaging, and the results are presented in Table 3.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_8_order_11",
+              "label": "para",
+              "text": "In Table 3 rows (A), we vary the number of attention heads and the attention key and value dimensions,\nkeeping the amount of computation constant, as described in Section 3.2.2 . While single-head\nattention is 0.9 BLEU worse than the best setting, quality also drops off with too many heads.",
+              "level": -1,
+              "page": 8,
+              "reading_order": 11,
+              "bbox": [
+                122,
+                752,
+                571,
+                791
+              ],
+              "section_number": null,
+              "summary": "The text discusses a study where the number of attention heads and the dimensions of attention key and value are varied while keeping computation constant. It is mentioned that single-head attention performs 0.9 BLEU worse than the best setting, and having too many heads also leads to a drop in quality. This information is detailed in Table 3 and is further explained in Section 3.2.2 of the document.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_8_order_12",
+              "label": "fnote",
+              "text": "We used values of 2.8, 3.7, 6.0 and 9.5 TFLOPS for K80, K40, M40 and P100, respectively.",
+              "level": -1,
+              "page": 8,
+              "reading_order": 12,
+              "bbox": [
+                140,
+                806,
+                517,
+                817
+              ],
+              "section_number": null,
+              "summary": "The text provides the TFLOPS values for different GPU models: K80 has 2.8 TFLOPS, K40 has 3.7 TFLOPS, M40 has 6.0 TFLOPS, and P100 has 9.5 TFLOPS. These values represent the processing power of each GPU model.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_8_order_13",
+              "label": "foot",
+              "text": "8",
+              "level": -1,
+              "page": 8,
+              "reading_order": 13,
+              "bbox": [
+                343,
+                840,
+                348,
+                851
+              ],
+              "section_number": "8",
+              "summary": "The document contains information related to the foot, specifically labeled as \"8\". This could refer to a specific measurement, size, or characteristic of the foot. The text is limited and does not provide further context.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            },
+            {
+              "id": "page_9_order_0",
+              "label": "table",
+              "text": "Table 3: Variations on the Transformer architecture. Unlisted values are identical to those of the base\nmodel. All metrics are on the English-to-German translation development set, newstest2013. Listed\nperplexities are per-wordpiece, according to our byte-pair encoding, and should not be compared to\nper-word perplexities. [TABLE: <table><tr><td></td><td>N</td><td>d model</td><td>d ff</td><td>h</td><td>d k</td><td>d v</td><td>P drop</td><td>e ls</td><td>train steps</td><td>PPL(dev)</td><td>BLEU(dev)</td><td>params ×10 6</td></tr><tr><td>ase</td><td>6</td><td>512</td><td>2048</td><td>8</td><td>64</td><td>64</td><td>0.1</td><td>0.1</td><td>100K</td><td>4.92</td><td>25.8</td><td>65</td></tr><tr><td rowspan=\"4\">(A)</td><td></td><td></td><td></td><td>1</td><td>512</td><td>512</td><td></td><td></td><td></td><td>5.29</td><td>24.9</td><td></td></tr><tr><td></td><td></td><td></td><td>4</td><td>128</td><td>128</td><td></td><td></td><td></td><td>5.00</td><td>25.5</td><td></td></tr><tr><td></td><td></td><td></td><td>16</td><td>32</td><td>32</td><td></td><td></td><td></td><td>4.91</td><td>25.8</td><td></td></tr><tr><td></td><td></td><td></td><td>32</td><td>16</td><td>16</td><td></td><td></td><td></td><td>5.01</td><td>25.4</td><td></td></tr><tr><td rowspan=\"2\">(B)</td><td></td><td></td><td></td><td></td><td>16</td><td></td><td></td><td></td><td></td><td>5.16</td><td>25.1</td><td>58</td></tr><tr><td></td><td></td><td></td><td></td><td>32</td><td></td><td></td><td></td><td></td><td>5.01</td><td>25.4</td><td>60</td></tr><tr><td rowspan=\"7\">(C)</td><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>6.11</td><td>23.7</td><td>36</td></tr><tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>5.19</td><td>25.3</td><td>50</td></tr><tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>4.88</td><td>25.5</td><td>80</td></tr><tr><td></td><td>256</td><td></td><td></td><td>32</td><td>32</td><td></td><td></td><td></td><td>5.75</td><td>24.5</td><td>28</td></tr><tr><td>1024</td><td></td><td></td><td>128</td><td>128</td><td></td><td></td><td></td><td></td><td>4.66</td><td>26.0</td><td>168</td></tr><tr><td></td><td></td><td>1024</td><td></td><td></td><td></td><td></td><td></td><td></td><td>5.12</td><td>25.4</td><td>53</td></tr><tr><td></td><td></td><td>4096</td><td></td><td></td><td></td><td></td><td></td><td></td><td>4.75</td><td>26.2</td><td>90</td></tr><tr><td rowspan=\"4\">(D)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>0.0</td><td></td><td></td><td>5.77</td><td>24.6</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td>0.2</td><td></td><td></td><td>4.95</td><td>25.5</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0.0</td><td></td><td>4.67</td><td>25.3</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0.2</td><td></td><td>5.47</td><td>25.7</td><td></td></tr><tr><td>(E)</td><td></td><td colspan=\"8\">positional embedding instead of sinusoids</td><td>4.92</td><td>25.7</td><td></td></tr><tr><td>ig</td><td>6</td><td>1024</td><td>4096</td><td>16</td><td></td><td></td><td>0.3</td><td></td><td>300K</td><td>4.33</td><td>26.4</td><td>213</td></tr></table>]",
+              "level": -1,
+              "page": 9,
+              "reading_order": 0,
+              "bbox": [
+                114,
+                143,
+                579,
+                439
+              ],
+              "section_number": null,
+              "summary": "The table provides variations on the Transformer architecture for English-to-German translation on the newstest2013 development set. It includes different configurations for parameters such as model size, feed-forward dimension, number of layers, attention heads, dropout rate, and more. Each variation is labeled with letters (A, B, C, D, E) and includes details on training steps, perplexity, BLEU score, and number of parameters. The table also notes that perplexities are per-wordpiece and should not be compared to per-word perplexities. Overall, the table offers a comprehensive comparison of different Transformer model configurations for translation tasks.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": [],
+              "merged_elements": [
+                {
+                  "label": "tab",
+                  "text": "<table><tr><td></td><td>N</td><td>d model</td><td>d ff</td><td>h</td><td>d k</td><td>d v</td><td>P drop</td><td>e ls</td><td>train steps</td><td>PPL(dev)</td><td>BLEU(dev)</td><td>params ×10 6</td></tr><tr><td>ase</td><td>6</td><td>512</td><td>2048</td><td>8</td><td>64</td><td>64</td><td>0.1</td><td>0.1</td><td>100K</td><td>4.92</td><td>25.8</td><td>65</td></tr><tr><td rowspan=\"4\">(A)</td><td></td><td></td><td></td><td>1</td><td>512</td><td>512</td><td></td><td></td><td></td><td>5.29</td><td>24.9</td><td></td></tr><tr><td></td><td></td><td></td><td>4</td><td>128</td><td>128</td><td></td><td></td><td></td><td>5.00</td><td>25.5</td><td></td></tr><tr><td></td><td></td><td></td><td>16</td><td>32</td><td>32</td><td></td><td></td><td></td><td>4.91</td><td>25.8</td><td></td></tr><tr><td></td><td></td><td></td><td>32</td><td>16</td><td>16</td><td></td><td></td><td></td><td>5.01</td><td>25.4</td><td></td></tr><tr><td rowspan=\"2\">(B)</td><td></td><td></td><td></td><td></td><td>16</td><td></td><td></td><td></td><td></td><td>5.16</td><td>25.1</td><td>58</td></tr><tr><td></td><td></td><td></td><td></td><td>32</td><td></td><td></td><td></td><td></td><td>5.01</td><td>25.4</td><td>60</td></tr><tr><td rowspan=\"7\">(C)</td><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>6.11</td><td>23.7</td><td>36</td></tr><tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>5.19</td><td>25.3</td><td>50</td></tr><tr><td>8</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>4.88</td><td>25.5</td><td>80</td></tr><tr><td></td><td>256</td><td></td><td></td><td>32</td><td>32</td><td></td><td></td><td></td><td>5.75</td><td>24.5</td><td>28</td></tr><tr><td>1024</td><td></td><td></td><td>128</td><td>128</td><td></td><td></td><td></td><td></td><td>4.66</td><td>26.0</td><td>168</td></tr><tr><td></td><td></td><td>1024</td><td></td><td></td><td></td><td></td><td></td><td></td><td>5.12</td><td>25.4</td><td>53</td></tr><tr><td></td><td></td><td>4096</td><td></td><td></td><td></td><td></td><td></td><td></td><td>4.75</td><td>26.2</td><td>90</td></tr><tr><td rowspan=\"4\">(D)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>0.0</td><td></td><td></td><td>5.77</td><td>24.6</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td>0.2</td><td></td><td></td><td>4.95</td><td>25.5</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0.0</td><td></td><td>4.67</td><td>25.3</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>0.2</td><td></td><td>5.47</td><td>25.7</td><td></td></tr><tr><td>(E)</td><td></td><td colspan=\"8\">positional embedding instead of sinusoids</td><td>4.92</td><td>25.7</td><td></td></tr><tr><td>ig</td><td>6</td><td>1024</td><td>4096</td><td>16</td><td></td><td></td><td>0.3</td><td></td><td>300K</td><td>4.33</td><td>26.4</td><td>213</td></tr></table>",
+                  "bbox": [
+                    114,
+                    143,
+                    579,
+                    439
+                  ],
+                  "page": 9,
+                  "reading_order": 0
+                },
+                {
+                  "label": "cap",
+                  "text": "Table 3: Variations on the Transformer architecture. Unlisted values are identical to those of the base\nmodel. All metrics are on the English-to-German translation development set, newstest2013. Listed\nperplexities are per-wordpiece, according to our byte-pair encoding, and should not be compared to\nper-word perplexities.",
+                  "bbox": [
+                    114,
+                    80,
+                    571,
+                    128
+                  ],
+                  "page": 9,
+                  "reading_order": 1
+                }
+              ],
+              "is_merged": true
+            },
+            {
+              "id": "page_9_order_2",
+              "label": "para",
+              "text": "In Table 3 rows (B), we observe that reducing the attention key size $d_k$ hurts model quality. This\nsuggests that determining compatibility is not easy and that a more sophisticated compatibility\nfunction than dot product may be beneficial. We further observe in rows (C) and (D) that, as expected,\nbigger models are better, and dropout is very helpful in avoiding over-fitting. In row (E) we replace our\nsinusoidal positional encoding with learned positional embeddings [8] , and observe nearly identical\nresults to the base model.",
+              "level": -1,
+              "page": 9,
+              "reading_order": 2,
+              "bbox": [
+                122,
+                465,
+                571,
+                540
+              ],
+              "section_number": null,
+              "summary": "The text discusses the impact of different factors on model quality in Table 3. It is noted that reducing the attention key size $d_k$ negatively affects model quality, indicating the need for a more sophisticated compatibility function. Larger models are found to perform better, and the use of dropout is effective in preventing overfitting. Replacing sinusoidal positional encoding with learned positional embeddings results in similar outcomes to the base model.",
+              "embeddings": [],
+              "children": [],
+              "content_elements": []
+            }
+          ]
+        }
+      ],
+      "content_elements": []
+    },
+    {
+      "id": "page_9_order_3",
+      "label": "sec",
+      "text": "7 Conclusion",
+      "level": 1,
+      "page": 9,
+      "reading_order": 3,
+      "bbox": [
+        122,
+        564,
+        206,
+        582
+      ],
+      "section_number": "7",
+      "summary": "The conclusion section discusses the introduction of the Transformer model, a sequence transduction model that relies on attention mechanisms. This model replaces traditional recurrent layers with multi-headed self-attention, leading to faster training and improved performance in translation tasks. The Transformer model has achieved state-of-the-art results on English-to-German and English-to-French translation tasks. Future applications include extending the model to tasks beyond text, such as images, audio, and video, with a focus on developing efficient attention mechanisms. The code for training and evaluating models is available on GitHub. The section also acknowledges the contributions of Nal Kalchbrenner and Stephan Gouws.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": [
+        {
+          "id": "page_9_order_4",
+          "label": "para",
+          "text": "In this work, we presented the Transformer, the first sequence transduction model based entirely on\nattention, replacing the recurrent layers most commonly used in encoder-decoder architectures with\nmulti-headed self-attention.",
+          "level": -1,
+          "page": 9,
+          "reading_order": 4,
+          "bbox": [
+            122,
+            591,
+            571,
+            630
+          ],
+          "section_number": null,
+          "summary": "The text discusses the introduction of the Transformer model, which is a sequence transduction model that relies solely on attention mechanisms. This model replaces the traditional recurrent layers found in encoder-decoder architectures with multi-headed self-attention. This innovation marks a significant departure from previous models and has implications for improving sequence processing tasks.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_9_order_5",
+          "label": "para",
+          "text": "For translation tasks, the Transformer can be trained significantly faster than architectures based\non recurrent or convolutional layers. On both WMT 2014 English-to-German and WMT 2014\nEnglish-to-French translation tasks, we achieve a new state of the art. In the former task our best\nmodel outperforms even all previously reported ensembles.",
+          "level": -1,
+          "page": 9,
+          "reading_order": 5,
+          "bbox": [
+            122,
+            636,
+            571,
+            689
+          ],
+          "section_number": null,
+          "summary": "The Transformer model is able to be trained much faster than other architectures like recurrent or convolutional layers for translation tasks. It has achieved a new state of the art performance on both WMT 2014 English-to-German and English-to-French translation tasks. In the English-to-German task, the best model outperforms all previously reported ensembles.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_9_order_6",
+          "label": "para",
+          "text": "We are excited about the future of attention-based models and plan to apply them to other tasks. We\nplan to extend the Transformer to problems involving input and output modalities other than text and\nto investigate local, restricted attention mechanisms to efficiently handle large inputs and outputs\nsuch as images, audio and video. Making generation less sequential is another research goals of ours.",
+          "level": -1,
+          "page": 9,
+          "reading_order": 6,
+          "bbox": [
+            114,
+            695,
+            571,
+            743
+          ],
+          "section_number": null,
+          "summary": "The document discusses the future applications of attention-based models, specifically the plan to extend the Transformer model to tasks beyond text, such as images, audio, and video. The focus is on developing efficient attention mechanisms for handling large inputs and outputs. Additionally, the goal is to make generation less sequential in order to improve overall performance.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_9_order_7",
+          "label": "para",
+          "text": "The code we used to train and evaluate our models is available at https://github.com/\ntensorflow/tensor2tensor .",
+          "level": -1,
+          "page": 9,
+          "reading_order": 7,
+          "bbox": [
+            122,
+            750,
+            571,
+            773
+          ],
+          "section_number": null,
+          "summary": "The code used for training and evaluating models is accessible at the specified GitHub repository: https://github.com/tensorflow/tensor2tensor. This repository contains the necessary resources for implementing and assessing machine learning models.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_9_order_8",
+          "label": "para",
+          "text": "Acknowledgements We are grateful to Nal Kalchbrenner and Stephan Gouws for their fruitful\ncomments, corrections and inspiration.",
+          "level": -1,
+          "page": 9,
+          "reading_order": 8,
+          "bbox": [
+            114,
+            788,
+            571,
+            817
+          ],
+          "section_number": null,
+          "summary": "The text acknowledges Nal Kalchbrenner and Stephan Gouws for their valuable comments, corrections, and inspiration.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        }
+      ]
+    },
+    {
+      "id": "page_10_order_0",
+      "label": "sec",
+      "text": "References",
+      "level": 1,
+      "page": 10,
+      "reading_order": 0,
+      "bbox": [
+        122,
+        80,
+        185,
+        98
+      ],
+      "section_number": null,
+      "summary": "The References section of the document provides a comprehensive overview of various research papers and studies related to neural networks, machine translation, deep learning, and natural language processing. Key papers discussed include those on layer normalization, neural machine translation, LSTM networks, convolutional sequence to sequence learning, and attention-based models. The section also covers topics such as dropout techniques, memory networks, and the use of sparsely-gated mixture-of-experts layers in neural networks. Important researchers and contributors mentioned include Geoffrey E Hinton, Yoshua Bengio, and Quoc V Le. The section references papers from arXiv, CoRR journal, and various conferences, highlighting the significance of these works in advancing the field of artificial intelligence and machine learning. Specific identifiers, publication years, and conference proceedings are provided for each paper, offering a detailed insight into the research landscape in these areas.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": [
+        {
+          "id": "page_10_order_1",
+          "label": "para",
+          "text": "[1] Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton. Layer normalization. arXiv preprint\narXiv:1607.06450 , 2016.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 1,
+          "bbox": [
+            123,
+            104,
+            571,
+            125
+          ],
+          "section_number": null,
+          "summary": "The text discusses a paper titled \"Layer Normalization\" authored by Jimmy Lei Ba, Jamie Ryan Kiros, and Geoffrey E Hinton, published on arXiv in 2016. The paper likely explores the concept and benefits of layer normalization in neural networks, a technique used to improve the training of deep learning models by normalizing the inputs to each layer. This normalization process helps in reducing training time and improving the overall performance of the neural network.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_2",
+          "label": "para",
+          "text": "[2] Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio. Neural machine translation by jointly\nlearning to align and translate. CoRR , abs/1409.0473, 2014.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 2,
+          "bbox": [
+            123,
+            134,
+            571,
+            162
+          ],
+          "section_number": null,
+          "summary": "The text refers to a research paper titled \"Neural machine translation by jointly learning to align and translate\" authored by Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Bengio in 2014. The paper discusses a neural machine translation approach that focuses on learning to align and translate simultaneously. This method aims to improve the accuracy and efficiency of machine translation by incorporating alignment learning into the translation process. The authors propose a model that can align words in the source and target languages while translating, leading to more accurate and contextually relevant translations.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_3",
+          "label": "para",
+          "text": "[3] Denny Britz, Anna Goldie, Minh-Thang Luong, and Quoc V. Le. Massive exploration of neural\nmachine translation architectures. CoRR , abs/1703.03906, 2017.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 3,
+          "bbox": [
+            123,
+            170,
+            571,
+            197
+          ],
+          "section_number": null,
+          "summary": "The text refers to a research paper titled \"Massive exploration of neural machine translation architectures\" authored by Denny Britz, Anna Goldie, Minh-Thang Luong, and Quoc V. Le in 2017. The paper explores various neural machine translation architectures and was published in the CoRR journal.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_4",
+          "label": "para",
+          "text": "[4] Jianpeng Cheng, Li Dong, and Mirella Lapata. Long short-term memory-networks for machine\nreading. arXiv preprint arXiv:1601.06733 , 2016.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 4,
+          "bbox": [
+            123,
+            206,
+            571,
+            232
+          ],
+          "section_number": null,
+          "summary": "The document discusses a study by Jianpeng Cheng, Li Dong, and Mirella Lapata on the use of Long Short-Term Memory (LSTM) networks for machine reading. The study was published as a preprint on arXiv in 2016. LSTM networks are a type of recurrent neural network that are capable of learning long-term dependencies in data. The authors explore the application of LSTM networks in the context of machine reading tasks, which involve understanding and extracting information from text. Their research likely focuses on the effectiveness of LSTM networks in improving the performance of machine reading systems.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_5",
+          "label": "para",
+          "text": "[5] Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk,\nand Yoshua Bengio. Learning phrase representations using rnn encoder-decoder for statistical\nmachine translation. CoRR , abs/1406.1078, 2014.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 5,
+          "bbox": [
+            123,
+            241,
+            571,
+            277
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper authored by Kyunghyun Cho, Bart van Merrienboer, Caglar Gulcehre, Fethi Bougares, Holger Schwenk, and Yoshua Bengio in 2014. The paper focuses on learning phrase representations using RNN encoder-decoder for statistical machine translation. This research is published in the CoRR journal under the reference abs/1406.1078.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_6",
+          "label": "para",
+          "text": "[6] Francois Chollet. Xception: Deep learning with depthwise separable convolutions. arXiv\npreprint arXiv:1610.02357 , 2016.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 6,
+          "bbox": [
+            123,
+            286,
+            571,
+            313
+          ],
+          "section_number": null,
+          "summary": "The text refers to a research paper by Francois Chollet titled \"Xception: Deep learning with depthwise separable convolutions\" published on arXiv in 2016. The paper discusses the use of depthwise separable convolutions in deep learning, presenting a new approach to improve the efficiency and performance of convolutional neural networks.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_7",
+          "label": "para",
+          "text": "[7] Junyoung Chung, Çaglar Gülçehre, Kyunghyun Cho, and Yoshua Bengio. Empirical evaluation\nof gated recurrent neural networks on sequence modeling. CoRR , abs/1412.3555, 2014.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 7,
+          "bbox": [
+            123,
+            322,
+            571,
+            349
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper by Junyoung Chung, Çaglar Gülçehre, Kyunghyun Cho, and Yoshua Bengio that evaluates the performance of gated recurrent neural networks in sequence modeling. The paper was published in 2014 in the CoRR journal. The study provides empirical evidence on the effectiveness of gated recurrent neural networks in handling sequential data.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_8",
+          "label": "para",
+          "text": "[8] Jonas Gehring, Michael Auli, David Grangier, Denis Yarats, and Yann N. Dauphin. Convolu-\ntional sequence to sequence learning. arXiv preprint arXiv:1705.03122v2 , 2017.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 8,
+          "bbox": [
+            123,
+            357,
+            571,
+            380
+          ],
+          "section_number": null,
+          "summary": "The text refers to a research paper titled \"Convolutional sequence to sequence learning\" authored by Jonas Gehring, Michael Auli, David Grangier, Denis Yarats, and Yann N. Dauphin in 2017. The paper was published as an arXiv preprint with the identifier arXiv:1705.03122v2. The focus of the paper is on convolutional sequence to sequence learning, which is a machine learning technique used for tasks such as natural language processing and machine translation.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_9",
+          "label": "para",
+          "text": "[9] Alex Graves. Generating sequences with recurrent neural networks. arXiv preprint\narXiv:1308.0850 , 2013.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 9,
+          "bbox": [
+            123,
+            391,
+            571,
+            412
+          ],
+          "section_number": null,
+          "summary": "The text refers to a paper by Alex Graves titled \"Generating sequences with recurrent neural networks\" published in 2013 on arXiv. The paper likely discusses the use of recurrent neural networks for generating sequences, which is a common application of this type of neural network architecture. This could involve tasks such as language modeling, speech recognition, or music generation. The paper may delve into the technical details of how recurrent neural networks can be trained to generate sequences effectively.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_10",
+          "label": "para",
+          "text": "[10] Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for im-\nage recognition. In Proceedings of the IEEE Conference on Computer Vision and Pattern\nRecognition , pages 770–778, 2016.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 10,
+          "bbox": [
+            122,
+            421,
+            571,
+            461
+          ],
+          "section_number": null,
+          "summary": "The text references a research paper titled \"Deep residual learning for image recognition\" authored by Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. The paper was presented at the IEEE Conference on Computer Vision and Pattern Recognition in 2016. The paper likely discusses a method or model for image recognition using deep residual learning techniques.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_11",
+          "label": "para",
+          "text": "[11] Sepp Hochreiter, Yoshua Bengio, Paolo Frasconi, and Jürgen Schmidhuber. Gradient flow in\nrecurrent nets: the difficulty of learning long-term dependencies, 2001.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 11,
+          "bbox": [
+            123,
+            472,
+            571,
+            495
+          ],
+          "section_number": null,
+          "summary": "The text refers to a paper titled \"Gradient flow in recurrent nets: the difficulty of learning long-term dependencies\" by Sepp Hochreiter, Yoshua Bengio, Paolo Frasconi, and Jürgen Schmidhuber published in 2001. The paper discusses the challenges associated with learning long-term dependencies in recurrent neural networks.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_12",
+          "label": "para",
+          "text": "[12] Sepp Hochreiter and Jürgen Schmidhuber. Long short-term memory. Neural computation ,\n9(8):1735–1780, 1997.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 12,
+          "bbox": [
+            122,
+            501,
+            571,
+            528
+          ],
+          "section_number": null,
+          "summary": "The text is a citation for a research paper titled \"Long short-term memory\" authored by Sepp Hochreiter and Jürgen Schmidhuber in 1997, published in the journal Neural Computation. The paper likely discusses the Long Short-Term Memory (LSTM) model, a type of recurrent neural network known for its ability to retain long-term dependencies in sequential data. This model has been widely used in various applications such as natural language processing, speech recognition, and time series prediction.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_13",
+          "label": "para",
+          "text": "[13] Rafal Jozefowicz, Oriol Vinyals, Mike Schuster, Noam Shazeer, and Yonghui Wu. Exploring\nthe limits of language modeling. arXiv preprint arXiv:1602.02410 , 2016.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 13,
+          "bbox": [
+            122,
+            537,
+            571,
+            564
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper titled \"Exploring the limits of language modeling\" authored by Rafal Jozefowicz, Oriol Vinyals, Mike Schuster, Noam Shazeer, and Yonghui Wu in 2016. The paper likely delves into the topic of language modeling and aims to investigate the boundaries and capabilities of this field. The document was published as an arXiv preprint, indicating that it is available for public access and review.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_14",
+          "label": "para",
+          "text": "[14] Łukasz Kaiser and Ilya Sutskever. Neural GPUs learn algorithms. In International Conference\non Learning Representations (ICLR) , 2016.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 14,
+          "bbox": [
+            122,
+            573,
+            571,
+            600
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper by Łukasz Kaiser and Ilya Sutskever presented at the International Conference on Learning Representations in 2016. The paper focuses on Neural GPUs, a type of neural network that is capable of learning algorithms. This research demonstrates the potential for neural networks to not only learn patterns in data but also to learn and perform complex tasks traditionally done by algorithms.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_15",
+          "label": "para",
+          "text": "[15] Nal Kalchbrenner, Lasse Espeholt, Karen Simonyan, Aaron van den Oord, Alex Graves, and Ko-\nray Kavukcuoglu. Neural machine translation in linear time. arXiv preprint arXiv:1610.10099v2 ,\n2017.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 15,
+          "bbox": [
+            122,
+            609,
+            571,
+            645
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper titled \"Neural machine translation in linear time\" authored by Nal Kalchbrenner, Lasse Espeholt, Karen Simonyan, Aaron van den Oord, Alex Graves, and Koray Kavukcuoglu in 2017. The paper explores the use of neural networks for machine translation and proposes a method that can achieve translation in linear time. This research is significant in the field of natural language processing and has implications for improving the efficiency and accuracy of machine translation systems.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_16",
+          "label": "para",
+          "text": "[16] Yoon Kim, Carl Denton, Luong Hoang, and Alexander M. Rush. Structured attention networks.\nIn International Conference on Learning Representations , 2017.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 16,
+          "bbox": [
+            122,
+            654,
+            571,
+            680
+          ],
+          "section_number": null,
+          "summary": "The text refers to a paper titled \"Structured attention networks\" authored by Yoon Kim, Carl Denton, Luong Hoang, and Alexander M. Rush, presented at the International Conference on Learning Representations in 2017. The paper likely discusses the use of structured attention networks in the context of machine learning and artificial intelligence, highlighting their importance and potential applications in the field.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_17",
+          "label": "para",
+          "text": "[17] Diederik Kingma and Jimmy Ba. Adam: A method for stochastic optimization. In ICLR , 2015.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 17,
+          "bbox": [
+            122,
+            689,
+            571,
+            701
+          ],
+          "section_number": null,
+          "summary": "The text refers to a paper titled \"Adam: A method for stochastic optimization\" by Diederik Kingma and Jimmy Ba, presented at the International Conference on Learning Representations (ICLR) in 2015. The paper introduces the Adam optimization algorithm, which is designed for stochastic optimization tasks. This algorithm has become popular in the machine learning community for its efficiency and effectiveness in optimizing neural networks.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_18",
+          "label": "para",
+          "text": "[18] Oleksii Kuchaiev and Boris Ginsburg. Factorization tricks for LSTM networks. arXiv preprint\narXiv:1703.10722 , 2017.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 18,
+          "bbox": [
+            122,
+            707,
+            571,
+            734
+          ],
+          "section_number": null,
+          "summary": "The document discusses factorization tricks for LSTM networks, proposed by Oleksii Kuchaiev and Boris Ginsburg in 2017. The techniques aim to improve the efficiency and performance of LSTM networks by utilizing factorization methods. The authors present their findings in a preprint on arXiv with the identifier arXiv:1703.10722.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_19",
+          "label": "para",
+          "text": "[19] Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen\nZhou, and Yoshua Bengio. A structured self-attentive sentence embedding. arXiv preprint\narXiv:1703.03130 , 2017.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 19,
+          "bbox": [
+            122,
+            743,
+            571,
+            780
+          ],
+          "section_number": null,
+          "summary": "The text discusses a paper titled \"A structured self-attentive sentence embedding\" authored by Zhouhan Lin, Minwei Feng, Cicero Nogueira dos Santos, Mo Yu, Bing Xiang, Bowen Zhou, and Yoshua Bengio. The paper was published as an arXiv preprint in 2017. The paper likely explores the development and application of a structured self-attentive sentence embedding model, which may involve utilizing self-attention mechanisms to create more effective sentence representations.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_20",
+          "label": "para",
+          "text": "[20] Samy Bengio Łukasz Kaiser. Can active memory replace attention? In Advances in Neural\nInformation Processing Systems, (NIPS) , 2016.",
+          "level": -1,
+          "page": 10,
+          "reading_order": 20,
+          "bbox": [
+            123,
+            793,
+            571,
+            817
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper by Samy Bengio and Łukasz Kaiser presented at the Advances in Neural Information Processing Systems (NIPS) conference in 2016. The paper explores the concept of whether active memory can serve as a replacement for attention mechanisms in neural networks. This research likely delves into the potential benefits and drawbacks of using active memory compared to traditional attention mechanisms in machine learning models.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_10_order_21",
+          "label": "foot",
+          "text": "10",
+          "level": -1,
+          "page": 10,
+          "reading_order": 21,
+          "bbox": [
+            338,
+            840,
+            355,
+            851
+          ],
+          "section_number": "10",
+          "summary": "The text content refers to the number \"10\" in the context of a foot measurement. This likely indicates a measurement of 10 feet in length.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_0",
+          "label": "para",
+          "text": "[21] Minh-Thang Luong, Hieu Pham, and Christopher D Manning. Effective approaches to attention-\nbased neural machine translation. arXiv preprint arXiv:1508.04025 , 2015.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 0,
+          "bbox": [
+            122,
+            80,
+            571,
+            107
+          ],
+          "section_number": null,
+          "summary": "The text discusses a paper titled \"Effective approaches to attention-based neural machine translation\" authored by Minh-Thang Luong, Hieu Pham, and Christopher D Manning in 2015. The paper focuses on different effective methods for attention-based neural machine translation and was published as an arXiv preprint with the identifier arXiv:1508.04025.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_1",
+          "label": "para",
+          "text": "[22] Ankur Parikh, Oscar Täckström, Dipanjan Das, and Jakob Uszkoreit. A decomposable attention\nmodel. In Empirical Methods in Natural Language Processing , 2016.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 1,
+          "bbox": [
+            122,
+            116,
+            571,
+            143
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper by Ankur Parikh, Oscar Täckström, Dipanjan Das, and Jakob Uszkoreit titled \"A decomposable attention model\" presented at the Empirical Methods in Natural Language Processing conference in 2016. The paper likely introduces a new attention model that decomposes the attention mechanism into smaller, more manageable parts for better understanding and performance in natural language processing tasks. This model may have implications for improving the efficiency and effectiveness of attention-based models in various NLP applications.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_2",
+          "label": "para",
+          "text": "[23] Romain Paulus, Caiming Xiong, and Richard Socher. A deep reinforced model for abstractive\nsummarization. arXiv preprint arXiv:1705.04304 , 2017.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 2,
+          "bbox": [
+            122,
+            151,
+            571,
+            174
+          ],
+          "section_number": null,
+          "summary": "The text refers to a research paper titled \"A deep reinforced model for abstractive summarization\" authored by Romain Paulus, Caiming Xiong, and Richard Socher in 2017. The paper discusses a deep learning model designed for generating abstractive summaries. The model utilizes reinforcement learning techniques to improve the quality of the summaries produced. This research is available as a preprint on arXiv with the identifier arXiv:1705.04304.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_3",
+          "label": "para",
+          "text": "[24] Ofir Press and Lior Wolf. Using the output embedding to improve language models. arXiv\npreprint arXiv:1608.05859 , 2016.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 3,
+          "bbox": [
+            123,
+            185,
+            571,
+            208
+          ],
+          "section_number": null,
+          "summary": "The document discusses a study by Ofir Press and Lior Wolf on improving language models by utilizing the output embedding. The study was published as a preprint on arXiv in 2016. The authors explore how incorporating the output embedding can enhance the performance of language models, potentially leading to more accurate and effective natural language processing systems.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_4",
+          "label": "para",
+          "text": "[25] Rico Sennrich, Barry Haddow, and Alexandra Birch. Neural machine translation of rare words\nwith subword units. arXiv preprint arXiv:1508.07909 , 2015.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 4,
+          "bbox": [
+            122,
+            215,
+            571,
+            242
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper by Rico Sennrich, Barry Haddow, and Alexandra Birch on neural machine translation of rare words using subword units. The paper was published in 2015 on arXiv. The authors explore the use of subword units to improve the translation of uncommon words in neural machine translation systems. This approach aims to address the challenge of translating words that are infrequent or unseen in the training data, ultimately enhancing the overall performance of machine translation systems.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_5",
+          "label": "para",
+          "text": "[26] Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton,\nand Jeff Dean. Outrageously large neural networks: The sparsely-gated mixture-of-experts\nlayer. arXiv preprint arXiv:1701.06538 , 2017.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 5,
+          "bbox": [
+            122,
+            250,
+            571,
+            288
+          ],
+          "section_number": null,
+          "summary": "The text discusses a paper titled \"Outrageously large neural networks: The sparsely-gated mixture-of-experts layer\" authored by Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz, Andy Davis, Quoc Le, Geoffrey Hinton, and Jeff Dean. The paper was published as an arXiv preprint in 2017. The focus of the paper is on the use of sparsely-gated mixture-of-experts layers in neural networks, highlighting the potential benefits of utilizing large neural networks in machine learning tasks.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_6",
+          "label": "para",
+          "text": "[27] Nitish Srivastava, Geoffrey E Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan Salakhutdi-\nnov. Dropout: a simple way to prevent neural networks from overfitting. Journal of Machine\nLearning Research , 15(1):1929–1958, 2014.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 6,
+          "bbox": [
+            122,
+            295,
+            571,
+            334
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper titled \"Dropout: a simple way to prevent neural networks from overfitting\" authored by Nitish Srivastava, Geoffrey E Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan Salakhutdinov in 2014. The paper explores the concept of dropout as a technique to prevent overfitting in neural networks. Dropout involves randomly dropping out units (neurons) during training to improve the generalization capabilities of the network. The research was published in the Journal of Machine Learning Research, volume 15, issue 1, pages 1929-1958.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_7",
+          "label": "para",
+          "text": "[28] Sainbayar Sukhbaatar, arthur szlam, Jason Weston, and Rob Fergus. End-to-end memory\nnetworks. In C. Cortes, N. D. Lawrence, D. D. Lee, M. Sugiyama, and R. Garnett, editors,\nAdvances in Neural Information Processing Systems 28 , pages 2440–2448. Curran Associates,\nInc., 2015.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 7,
+          "bbox": [
+            122,
+            340,
+            571,
+            394
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper titled \"End-to-end memory networks\" authored by Sainbayar Sukhbaatar, arthur szlam, Jason Weston, and Rob Fergus. The paper was published in the Advances in Neural Information Processing Systems 28 conference proceedings in 2015. The paper focuses on end-to-end memory networks and their applications in artificial intelligence and machine learning.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_8",
+          "label": "para",
+          "text": "[29] Ilya Sutskever, Oriol Vinyals, and Quoc VV Le. Sequence to sequence learning with neural\nnetworks. In Advances in Neural Information Processing Systems , pages 3104–3112, 2014.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 8,
+          "bbox": [
+            122,
+            403,
+            571,
+            426
+          ],
+          "section_number": null,
+          "summary": "The text discusses a paper by Ilya Sutskever, Oriol Vinyals, and Quoc VV Le on sequence to sequence learning with neural networks, published in 2014 in Advances in Neural Information Processing Systems. The paper explores the use of neural networks for learning sequences and their applications in various fields.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_9",
+          "label": "para",
+          "text": "[30] Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and Zbigniew Wojna.\nRethinking the inception architecture for computer vision. CoRR , abs/1512.00567, 2015.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 9,
+          "bbox": [
+            123,
+            436,
+            571,
+            460
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper titled \"Rethinking the inception architecture for computer vision\" authored by Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and Zbigniew Wojna in 2015. The paper focuses on reevaluating the inception architecture for computer vision tasks. This research is likely to present new insights and improvements in the field of computer vision.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_10",
+          "label": "para",
+          "text": "[31] Yonghui Wu, Mike Schuster, Zhifeng Chen, Quoc V Le, Mohammad Norouzi, Wolfgang\nMacherey, Maxim Krikun, Yuan Cao, Qin Gao, Klaus Macherey, et al. Google’s neural machine\ntranslation system: Bridging the gap between human and machine translation. arXiv preprint\narXiv:1609.08144 , 2016.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 10,
+          "bbox": [
+            122,
+            465,
+            571,
+            519
+          ],
+          "section_number": null,
+          "summary": "The text discusses Google's neural machine translation system, which aims to improve the accuracy and quality of translation between human languages. The system, developed in 2016, utilizes advanced technology to bridge the gap between human and machine translation. Key contributors to the project include Yonghui Wu, Mike Schuster, Zhifeng Chen, Quoc V Le, Mohammad Norouzi, Wolfgang Macherey, Maxim Krikun, Yuan Cao, Qin Gao, and Klaus Macherey. The system is detailed in an arXiv preprint with the identifier arXiv:1609.08144.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_11",
+          "label": "para",
+          "text": "[32] Jie Zhou, Ying Cao, Xuguang Wang, Peng Li, and Wei Xu. Deep recurrent models with\nfast-forward connections for neural machine translation. CoRR , abs/1606.04199, 2016.",
+          "level": -1,
+          "page": 11,
+          "reading_order": 11,
+          "bbox": [
+            122,
+            528,
+            571,
+            555
+          ],
+          "section_number": null,
+          "summary": "The text discusses a research paper by Jie Zhou, Ying Cao, Xuguang Wang, Peng Li, and Wei Xu titled \"Deep recurrent models with fast-forward connections for neural machine translation\" published in 2016. The paper explores the use of deep recurrent models with fast-forward connections to improve neural machine translation. The authors propose a new architecture that incorporates these connections to enhance the performance of neural machine translation systems.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        },
+        {
+          "id": "page_11_order_12",
+          "label": "foot",
+          "text": "11",
+          "level": -1,
+          "page": 11,
+          "reading_order": 12,
+          "bbox": [
+            338,
+            840,
+            355,
+            851
+          ],
+          "section_number": "11",
+          "summary": "The document contains information related to the foot, specifically labeled as \"11\". This could refer to a specific measurement, size, or characteristic of the foot. The details of what exactly \"11\" represents in relation to the foot are not provided in the summary.",
+          "embeddings": [],
+          "children": [],
+          "content_elements": []
+        }
+      ]
+    }
+  ],
+  "content_elements": [
+    {
+      "id": "page_1_order_1",
+      "label": "author",
+      "text": "Ashish Vaswani*",
+      "level": -1,
+      "page": 1,
+      "reading_order": 1,
+      "bbox": [
+        149,
+        206,
+        230,
+        219
+      ],
+      "section_number": null,
+      "summary": "The author of the document is Ashish Vaswani.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_2",
+      "label": "para",
+      "text": "Google Brain",
+      "level": -1,
+      "page": 1,
+      "reading_order": 2,
+      "bbox": [
+        157,
+        222,
+        221,
+        233
+      ],
+      "section_number": null,
+      "summary": "Google Brain is a deep learning research project at Google that focuses on artificial intelligence and machine learning. It was founded in 2011 and has made significant contributions to the field, including developing neural networks for various applications such as image recognition, natural language processing, and reinforcement learning. The project has also produced open-source software tools like TensorFlow, which have been widely adopted by the research community. Overall, Google Brain is a key player in advancing the field of AI and pushing the boundaries of what is possible with machine learning technology.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_3",
+      "label": "para",
+      "text": "avaswani@google.com",
+      "level": -1,
+      "page": 1,
+      "reading_order": 3,
+      "bbox": [
+        131,
+        233,
+        244,
+        247
+      ],
+      "section_number": null,
+      "summary": "The text contains an email address: avaswani@google.com. This email address belongs to an individual named Avaswani and is associated with the domain google.com.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_4",
+      "label": "author",
+      "text": "Noam Shazeer*\nGoogle Brain",
+      "level": -1,
+      "page": 1,
+      "reading_order": 4,
+      "bbox": [
+        266,
+        206,
+        347,
+        233
+      ],
+      "section_number": null,
+      "summary": "The author of the document is Noam Shazeer, who is affiliated with Google Brain.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_5",
+      "label": "para",
+      "text": "noam@google.com",
+      "level": -1,
+      "page": 1,
+      "reading_order": 5,
+      "bbox": [
+        257,
+        233,
+        349,
+        247
+      ],
+      "section_number": null,
+      "summary": "The text contains an email address: noam@google.com. This email address belongs to someone named Noam who works at Google.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_6",
+      "label": "author",
+      "text": "Niki Parmar*",
+      "level": -1,
+      "page": 1,
+      "reading_order": 6,
+      "bbox": [
+        382,
+        206,
+        454,
+        219
+      ],
+      "section_number": null,
+      "summary": "The author of the document is Niki Parmar.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_7",
+      "label": "para",
+      "text": "Google Research",
+      "level": -1,
+      "page": 1,
+      "reading_order": 7,
+      "bbox": [
+        373,
+        222,
+        454,
+        233
+      ],
+      "section_number": null,
+      "summary": "The text discusses Google Research, which is a division within Google dedicated to conducting research in various fields such as artificial intelligence, machine learning, and natural language processing. The division focuses on developing new technologies, algorithms, and tools to improve Google's products and services. Google Research collaborates with universities, research institutions, and industry partners to advance the field of technology and innovation.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_8",
+      "label": "para",
+      "text": "nikip@google.com",
+      "level": -1,
+      "page": 1,
+      "reading_order": 8,
+      "bbox": [
+        364,
+        233,
+        463,
+        247
+      ],
+      "section_number": null,
+      "summary": "The text contains an email address: nikip@google.com.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_9",
+      "label": "author",
+      "text": "Jakob Uszkoreit+",
+      "level": -1,
+      "page": 1,
+      "reading_order": 9,
+      "bbox": [
+        481,
+        206,
+        562,
+        219
+      ],
+      "section_number": null,
+      "summary": "The author of the document is Jakob Uszkoreit.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_10",
+      "label": "para",
+      "text": "Google Research",
+      "level": -1,
+      "page": 1,
+      "reading_order": 10,
+      "bbox": [
+        480,
+        223,
+        562,
+        233
+      ],
+      "section_number": null,
+      "summary": "The text discusses Google Research, which is a division within Google focused on advancing the field of artificial intelligence and machine learning. Google Research is responsible for developing new technologies, algorithms, and tools that are used in various Google products and services. The division collaborates with academic institutions and publishes research papers to contribute to the broader scientific community. Google Research plays a crucial role in driving innovation and pushing the boundaries of what is possible in the field of AI and machine learning.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_11",
+      "label": "para",
+      "text": "isz@google.com",
+      "level": -1,
+      "page": 1,
+      "reading_order": 11,
+      "bbox": [
+        480,
+        233,
+        562,
+        247
+      ],
+      "section_number": null,
+      "summary": "The text \"isz@google.com\" is an email address associated with the domain google.com. This email address can be used to contact someone at Google for any relevant inquiries or communication.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_12",
+      "label": "author",
+      "text": "Llion Jones\"",
+      "level": -1,
+      "page": 1,
+      "reading_order": 12,
+      "bbox": [
+        158,
+        267,
+        222,
+        277
+      ],
+      "section_number": null,
+      "summary": "The author of the document is Llion Jones.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_13",
+      "label": "para",
+      "text": "Google Research",
+      "level": -1,
+      "page": 1,
+      "reading_order": 13,
+      "bbox": [
+        149,
+        277,
+        239,
+        288
+      ],
+      "section_number": null,
+      "summary": "The text discusses Google Research, which is a division within Google dedicated to conducting research and developing innovative technologies. This division focuses on various areas such as artificial intelligence, machine learning, natural language processing, and computer vision. Google Research plays a crucial role in advancing technology and creating new products and services for users.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_14",
+      "label": "para",
+      "text": "lion@google.com",
+      "level": -1,
+      "page": 1,
+      "reading_order": 14,
+      "bbox": [
+        149,
+        288,
+        239,
+        304
+      ],
+      "section_number": null,
+      "summary": "The text contains an email address \"lion@google.com\". This email address belongs to the domain \"google.com\" and is likely associated with a user or employee named \"lion\". It can be used for communication or contact purposes related to Google.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_15",
+      "label": "author",
+      "text": "Aidan N. Gomez\" ↑",
+      "level": -1,
+      "page": 1,
+      "reading_order": 15,
+      "bbox": [
+        275,
+        267,
+        373,
+        277
+      ],
+      "section_number": null,
+      "summary": "The author of the document is Aidan N. Gomez.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_16",
+      "label": "para",
+      "text": "University of Toronto",
+      "level": -1,
+      "page": 1,
+      "reading_order": 16,
+      "bbox": [
+        275,
+        277,
+        382,
+        288
+      ],
+      "section_number": null,
+      "summary": "The University of Toronto is a prestigious educational institution located in Canada. It is known for its high academic standards and diverse range of programs. The university offers undergraduate and graduate degrees in various fields of study. It is a leading research institution with a strong reputation for innovation and excellence in education. The University of Toronto is recognized globally for its contributions to academia and research.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_17",
+      "label": "para",
+      "text": "aidan@cs.toronto.edu",
+      "level": -1,
+      "page": 1,
+      "reading_order": 17,
+      "bbox": [
+        266,
+        288,
+        391,
+        304
+      ],
+      "section_number": null,
+      "summary": "The text provides an email address for Aidan at the University of Toronto's computer science department. The email address is aidan@cs.toronto.edu. This information can be used to contact Aidan for any relevant purposes related to the computer science department at the University of Toronto.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_18",
+      "label": "author",
+      "text": "这是一篇與恆星相關的小作品。 你可以编辑或修订扩充其内容。",
+      "level": -1,
+      "page": 1,
+      "reading_order": 18,
+      "bbox": [
+        409,
+        267,
+        519,
+        277
+      ],
+      "section_number": null,
+      "summary": "The text is a short piece related to stars, with the author inviting readers to edit or revise and expand upon its content. It is open for further contributions and modifications.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_19",
+      "label": "para",
+      "text": "Google Brain",
+      "level": -1,
+      "page": 1,
+      "reading_order": 19,
+      "bbox": [
+        454,
+        277,
+        517,
+        288
+      ],
+      "section_number": null,
+      "summary": "Google Brain is a deep learning research project at Google that aims to improve machine learning algorithms and models. It was founded in 2011 and has made significant contributions to various fields such as computer vision, natural language processing, and reinforcement learning. The project has produced several important research papers and open-source tools that have advanced the field of artificial intelligence. Google Brain's work has had a significant impact on the development of AI technologies and has helped drive innovation in the industry.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_20",
+      "label": "para",
+      "text": "lukaszkaiser@google.com",
+      "level": -1,
+      "page": 1,
+      "reading_order": 20,
+      "bbox": [
+        409,
+        288,
+        549,
+        304
+      ],
+      "section_number": null,
+      "summary": "The text contains an email address: lukaszkaiser@google.com.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_21",
+      "label": "author",
+      "text": "Illia Polosukhin*",
+      "level": -1,
+      "page": 1,
+      "reading_order": 21,
+      "bbox": [
+        302,
+        322,
+        391,
+        332
+      ],
+      "section_number": null,
+      "summary": "The content is the name of the author, Illia Polosukhin. No additional information is provided in the text.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    },
+    {
+      "id": "page_1_order_22",
+      "label": "para",
+      "text": "illia.polosukhin@gmail.com",
+      "level": -1,
+      "page": 1,
+      "reading_order": 22,
+      "bbox": [
+        266,
+        337,
+        419,
+        349
+      ],
+      "section_number": null,
+      "summary": "The text contains an email address: illia.polosukhin@gmail.com.",
+      "embeddings": [],
+      "children": [],
+      "content_elements": []
+    }
+  ]
+}

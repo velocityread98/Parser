@@ -1,0 +1,27 @@
+GIT-STYLE DOCUMENT HIERARCHY (Compact)
+==================================================
+
+📖 Attention Is All You Need (p.1) [22 items]
+├─ 📑 Abstract (p.1) [1 items]
+├─ 📑 1 Introduction (p.1) [8 items]
+├─ 📑 2 Background (p.2) [4 items]
+├─ 📑 3 Model Architecture (p.2) [2 items]
+│  ├─ 📝 3.1 Encoder and Decoder Stacks (p.2) [5 items]
+│  ├─ 📝 3.2 Attention (p.3) [1 items]
+│  │  ├─ • 3.2.1 Scaled Dot-Product Attention (p.3) [6 items]
+│  │  ├─ • 3.2.2 Multi-Head Attention (p.4) [7 items]
+│  │  └─ • 3.2.3 Applications of Attention in our Mode (p.5) [2 items]
+│  ├─ 📝 3.3 Position-wise Feed-Forward Networks (p.5) [2 items]
+│  ├─ 📝 3.4 Embeddings and Softma (p.5) [1 items]
+│  └─ 📝 3.5 Positional Encoding (p.5) [6 items]
+├─ 📑 4 Why Self-Attention (p.6) [8 items]
+├─ 📑 5 Training (p.7) [1 items]
+│  ├─ 📝 5.1 Training Data and Batching (p.7) [1 items]
+│  ├─ 📝 5.2 Hardware and Schedule (p.7) [1 items]
+│  ├─ 📝 5.3 Optimizer (p.7) [2 items]
+│  └─ 📝 5.4 Regularization (p.7) [4 items]
+├─ 📑 6 Results (p.8)
+│  ├─ 📝 6.1 Machine Translation (p.8) [4 items]
+│  └─ 📝 6.2 Model Variations (p.8) [6 items]
+├─ 📑 7 Conclusion (p.9) [5 items]
+└─ 📑 References (p.10) [34 items]

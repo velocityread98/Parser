@@ -1,0 +1,27 @@
+DOCUMENT FLOW VISUALIZATION
+================================================================================
+
+📖 Attention Is All You Need (22 items)
+  → 📑 Abstract (1 items)
+  → 📑 1 Introduction (8 items)
+  → 📑 2 Background (4 items)
+  → 📑 3 Model Architecture (2 items)
+    → 📝 3.1 Encoder and Decoder Stacks (5 items)
+    → 📝 3.2 Attention (1 items)
+      → • 3.2.1 Scaled Dot-Product Attention (6 items)
+      → • 3.2.2 Multi-Head Attention (7 items)
+      → • 3.2.3 Applications of Attention in our M... (2 items)
+    → 📝 3.3 Position-wise Feed-Forward Networks (2 items)
+    → 📝 3.4 Embeddings and Softma (1 items)
+    → 📝 3.5 Positional Encoding (6 items)
+  → 📑 4 Why Self-Attention (8 items)
+  → 📑 5 Training (1 items)
+    → 📝 5.1 Training Data and Batching (1 items)
+    → 📝 5.2 Hardware and Schedule (1 items)
+    → 📝 5.3 Optimizer (2 items)
+    → 📝 5.4 Regularization (4 items)
+  → 📑 6 Results
+    → 📝 6.1 Machine Translation (4 items)
+    → 📝 6.2 Model Variations (6 items)
+  → 📑 7 Conclusion (5 items)
+  → 📑 References (34 items)
