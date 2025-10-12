@@ -1,0 +1,250 @@
+{
+  "Chapter 1 Introduction to Percolation": {
+    "start_page": 11,
+    "subheadings": {
+      "1.1 Basic Concepts in Percolation": 15,
+      "1.2 Percolation Probability": 18,
+      "1.3 Spanning Cluster": 20,
+      "1.4 Percolation in Small Systems": 22,
+      "1.5 Further Reading": 25,
+      "Exercises": 25
+    }
+  },
+  "Chapter 2 One-Dimensional Percolation": {
+    "start_page": 27,
+    "subheadings": {
+      "2.1 Percolation Probability": 27,
+      "2.2 Cluster Number Density": {
+        "start_page": 27,
+        "subheadings": {
+          "Definition of Cluster Number Density": 28,
+          "Measuring the Cluster Number Density": 30,
+          "Shape of the Cluster Number Density": 32,
+          "Numerical Measurement of the Cluster Number Density": 35,
+          "Average Cluster size": 37
+        }
+      },
+      "2.3 Spanning Cluster": 38,
+      "2.4 Correlation Length": 39,
+      "Exercises": 40
+    }
+  },
+  "Chapter 3 Infinite-Dimensional Percolation": {
+    "start_page": 42,
+    "subheadings": {
+      "3.1 Percolation Threshold": 42,
+      "3.2 Spanning Cluster": 43,
+      "3.3 Average Cluster Size": 47,
+      "3.4 Cluster Number Density": 48,
+      "Exercises": 55
+    }
+  },
+  "Chapter 4 Finite-Dimensional Percolation": {
+    "start_page": 56,
+    "subheadings": {
+      "4.1 Cluster Number Density": {
+        "start_page": 57,
+        "subheadings": {
+          "Numerical Estimation of n(s,p)": 59,
+          "Measuring Probability Densities of Rare Events": 60,
+          "Measurements of n(s,p) When p →pc": 61,
+          "Scaling Theory for n(s,p)": 63,
+          "Scaling Ansatz for 1d Percolation": 64,
+          "Scaling Ansatz for Bethe Lattice": 64
+        }
+      },
+      "4.2 Consequences of the Scaling Ansatz": {
+        "start_page": 65,
+        "subheadings": {
+          "Average Cluster Size": 65,
+          "Density of Spanning Cluster": 66
+        }
+      },
+      "4.3 Percolation Thresholds": 68,
+      "Exercises": 69
+    }
+  },
+  "Chapter 5 Geometry of Clusters": {
+    "start_page": 72,
+    "subheadings": {
+      "5.1 Geometry of Finite Clusters": {
+        "start_page": 72,
+        "subheadings": {
+          "Analytical Results in One Dimension": 73,
+          "Numerical Results in Two Dimensions": 74,
+          "Scaling Behavior in Two Dimensions": 77
+        }
+      },
+      "5.2 Characteristic Cluster Size": {
+        "start_page": 78,
+        "subheadings": {
+          "Average Radius of Gyration": 78,
+          "Correlation Length": 80
+        }
+      },
+      "5.3 Geometry of the Spanning Cluster": 88,
+      "5.4 Spanning Cluster Above pc": 90,
+      "Exercises": 92
+    }
+  },
+  "Chapter 6 Finite Size Scaling": {
+    "start_page": 94,
+    "subheadings": {
+      "6.1 General Aspects of Finite Size Scaling": 95,
+      "6.2 Finite Size Scaling of P(p,L)": 96,
+      "6.3 Average Cluster Size": {
+        "start_page": 100,
+        "subheadings": {
+          "Measuring Moments of the Cluster Number Density": 100,
+          "Scaling Theory for S(p,L)": 101
+        }
+      },
+      "6.4 Percolation Threshold": {
+        "start_page": 103,
+        "subheadings": {
+          "Measuring the Percolation Probability Π(p,L)": 103,
+          "Measuring the Percolation Threshold pc": 104,
+          "Finite-Size Scaling Theory for Π(p,L)": 105,
+          "Estimating pc Using the Scaling Ansatz": 106,
+          "Estimating pc and ν Using the Scaling Ansatz": 107
+        }
+      },
+      "Exercises": 107
+    }
+  },
+  "Chapter 7 Renormalization": {
+    "start_page": 109,
+    "subheadings": {
+      "7.1 The Renormalization Mapping": {
+        "start_page": 110,
+        "subheadings": {
+          "Iterating the Renormalization Mapping": 114
+        }
+      },
+      "7.2 Examples": {
+        "start_page": 116,
+        "subheadings": {
+          "Example: One-Dimensional Percolation": 116,
+          "Example: Renormalization on 2d Site Lattice": 117,
+          "Example: Renormalization on 2d Triangular Lattice": 119,
+          "Example: Renormalization on 2d Bond Lattice": 121
+        }
+      },
+      "Exercises": 123
+    }
+  },
+  "Chapter 8 Subset Geometry": {
+    "start_page": 127,
+    "subheadings": {
+      "8.1 Singly Connected Bonds": 127,
+      "8.2 Self-Avoiding Paths on the Cluster": {
+        "start_page": 129,
+        "subheadings": {
+          "Minimal Path": 129,
+          "Maximum and Average Path": 129,
+          "Backbone": 130,
+          "Scaling of the Dangling Ends": 131,
+          "Argument for the Scaling of Subsets": 131,
+          "Blob Model for the Spanning Cluster": 132,
+          "Mass-Scaling Exponents for Subsets of the Spanning Clusters": 132
+        }
+      },
+      "8.3 Renormalization Calculation": 133,
+      "8.4 Deterministic Fractal Models": 134,
+      "8.5 Lacunarity": 136,
+      "Exercises": 138
+    }
+  },
+  "Chapter 9 Flow in Disordered Media": {
+    "start_page": 143,
+    "subheadings": {
+      "9.1 Introduction to Disorder": 143,
+      "9.2 Conductivity and Permeability": {
+        "start_page": 144,
+        "subheadings": {
+          "Electrical Conductivity and Resistor Networks": 144,
+          "Flow Conductivity of a Porous System": 145
+        }
+      },
+      "9.3 Conductance of a Percolation Lattice": {
+        "start_page": 146,
+        "subheadings": {
+          "Finding the Conductance of the System": 146,
+          "Computational Methods": 148,
+          "Measuring the Conductance": 152,
+          "Conductance and the Density of the Spanning Cluster": 154
+        }
+      },
+      "9.4 Scaling Arguments for Conductance and Conductivity": {
+        "start_page": 155,
+        "subheadings": {
+          "Scaling Argument for p>pc and L ξ": 155,
+          "Conductance of the Spanning Cluster": 156,
+          "Conductivity for p>pc": 158
+        }
+      },
+      "9.5 Renormalization Calculation": 159,
+      "9.6 Finite Size Scaling": {
+        "start_page": 160,
+        "subheadings": {
+          "Finite-Size Scaling Observations": 160
+        }
+      },
+      "9.7 Internal Distribution of Currents": 163,
+      "9.8 Real Conductivity": 166,
+      "Exercises": 168
+    }
+  },
+  "Chapter 10 Elastic Properties of Disordered Media": {
+    "start_page": 170,
+    "subheadings": {
+      "10.1 Rigidity Percolation": {
+        "start_page": 170,
+        "subheadings": {
+          "Developing a Theory for E(p,L)": 172,
+          "Compliance of the Spanning Cluster at p = pc": 174,
+          "Finding Young's Modulus E(p,L)": 176
+        }
+      }
+    }
+  },
+  "Chapter 11 Diffusion in Disordered Media": {
+    "start_page": 178,
+    "subheadings": {
+      "11.1 Diffusion and Random Walks in Homogeneous Media": {
+        "start_page": 178,
+        "subheadings": {
+          "Theory for the Time Development of a Random Walk": 179,
+          "Continuum Description of a Random Walker": 181
+        }
+      },
+      "11.2 Random Walks on Clusters": {
+        "start_page": 182,
+        "subheadings": {
+          "Developing a Program to Study Random Walks on Clusters": 182,
+          "Diffusion on a Finite Cluster for p<pc": 189,
+          "Diffusion at p = pc": 192,
+          "Diffusion for p>pc": 192,
+          "Scaling Theory": 193,
+          "Diffusion on the Spanning Cluster": 197,
+          "The Diffusion Constant D": 199
+        }
+      },
+      "Exercises": 200
+    }
+  },
+  "Chapter 12 Dynamic Processes in Disordered Media": {
+    "start_page": 202,
+    "subheadings": {
+      "12.1 Introduction": 202,
+      "12.2 Diffusion Fronts": 203,
+      "12.3 Invasion Percolation": {
+        "start_page": 205,
+        "subheadings": {
+          "Gravity Stabilization": 210,
+          "Gravity Destabilization": 213
+        }
+      }
+    }
+  }
+}

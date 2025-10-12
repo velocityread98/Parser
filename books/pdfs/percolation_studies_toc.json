@@ -1,0 +1,682 @@
+[
+  {
+    "level": 1,
+    "title": "Preface",
+    "page": 6
+  },
+  {
+    "level": 1,
+    "title": "Contents",
+    "page": 9
+  },
+  {
+    "level": 1,
+    "title": "1 Introduction to Percolation",
+    "page": 11
+  },
+  {
+    "level": 2,
+    "title": "1.1 Basic Concepts in Percolation",
+    "page": 15
+  },
+  {
+    "level": 2,
+    "title": "1.2 Percolation Probability",
+    "page": 18
+  },
+  {
+    "level": 2,
+    "title": "1.3 Spanning Cluster",
+    "page": 20
+  },
+  {
+    "level": 2,
+    "title": "1.4 Percolation in Small Systems",
+    "page": 22
+  },
+  {
+    "level": 2,
+    "title": "1.5 Further Reading",
+    "page": 25
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 25
+  },
+  {
+    "level": 1,
+    "title": "2 One-Dimensional Percolation",
+    "page": 27
+  },
+  {
+    "level": 2,
+    "title": "2.1 Percolation Probability",
+    "page": 27
+  },
+  {
+    "level": 2,
+    "title": "2.2 Cluster Number Density",
+    "page": 27
+  },
+  {
+    "level": 3,
+    "title": "Definition of Cluster Number Density",
+    "page": 28
+  },
+  {
+    "level": 3,
+    "title": "Measuring the Cluster Number Density",
+    "page": 30
+  },
+  {
+    "level": 3,
+    "title": "Shape of the Cluster Number Density",
+    "page": 32
+  },
+  {
+    "level": 3,
+    "title": "Numerical Measurement of the Cluster Number Density",
+    "page": 35
+  },
+  {
+    "level": 3,
+    "title": "Average Cluster size",
+    "page": 37
+  },
+  {
+    "level": 2,
+    "title": "2.3 Spanning Cluster",
+    "page": 38
+  },
+  {
+    "level": 2,
+    "title": "2.4 Correlation Length",
+    "page": 39
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 40
+  },
+  {
+    "level": 1,
+    "title": "3 Infinite-Dimensional Percolation",
+    "page": 42
+  },
+  {
+    "level": 2,
+    "title": "3.1 Percolation Threshold",
+    "page": 42
+  },
+  {
+    "level": 2,
+    "title": "3.2 Spanning Cluster",
+    "page": 43
+  },
+  {
+    "level": 2,
+    "title": "3.3 Average Cluster Size",
+    "page": 47
+  },
+  {
+    "level": 2,
+    "title": "3.4 Cluster Number Density",
+    "page": 48
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 55
+  },
+  {
+    "level": 1,
+    "title": "4 Finite-Dimensional Percolation",
+    "page": 56
+  },
+  {
+    "level": 2,
+    "title": "4.1 Cluster Number Density",
+    "page": 57
+  },
+  {
+    "level": 3,
+    "title": "Numerical Estimation of n(s,p)",
+    "page": 59
+  },
+  {
+    "level": 3,
+    "title": "Measuring Probability Densities of Rare Events",
+    "page": 60
+  },
+  {
+    "level": 3,
+    "title": "Measurements of n(s,p) When p →pc",
+    "page": 61
+  },
+  {
+    "level": 3,
+    "title": "Scaling Theory for n(s,p)",
+    "page": 63
+  },
+  {
+    "level": 3,
+    "title": "Scaling Ansatz for 1d Percolation",
+    "page": 64
+  },
+  {
+    "level": 3,
+    "title": "Scaling Ansatz for Bethe Lattice",
+    "page": 64
+  },
+  {
+    "level": 2,
+    "title": "4.2 Consequences of the Scaling Ansatz",
+    "page": 65
+  },
+  {
+    "level": 3,
+    "title": "Average Cluster Size",
+    "page": 65
+  },
+  {
+    "level": 3,
+    "title": "Density of Spanning Cluster",
+    "page": 66
+  },
+  {
+    "level": 2,
+    "title": "4.3 Percolation Thresholds",
+    "page": 68
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 69
+  },
+  {
+    "level": 1,
+    "title": "5 Geometry of Clusters",
+    "page": 72
+  },
+  {
+    "level": 2,
+    "title": "5.1 Geometry of Finite Clusters",
+    "page": 72
+  },
+  {
+    "level": 3,
+    "title": "Analytical Results in One Dimension",
+    "page": 73
+  },
+  {
+    "level": 3,
+    "title": "Numerical Results in Two Dimensions",
+    "page": 74
+  },
+  {
+    "level": 3,
+    "title": "Scaling Behavior in Two Dimensions",
+    "page": 77
+  },
+  {
+    "level": 2,
+    "title": "5.2 Characteristic Cluster Size",
+    "page": 78
+  },
+  {
+    "level": 3,
+    "title": "Average Radius of Gyration",
+    "page": 78
+  },
+  {
+    "level": 3,
+    "title": "Correlation Length",
+    "page": 80
+  },
+  {
+    "level": 2,
+    "title": "5.3 Geometry of the Spanning Cluster",
+    "page": 88
+  },
+  {
+    "level": 2,
+    "title": "5.4 Spanning Cluster Above pc",
+    "page": 90
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 92
+  },
+  {
+    "level": 1,
+    "title": "6 Finite Size Scaling",
+    "page": 94
+  },
+  {
+    "level": 2,
+    "title": "6.1 General Aspects of Finite Size Scaling",
+    "page": 95
+  },
+  {
+    "level": 2,
+    "title": "6.2 Finite Size Scaling of P(p,L)",
+    "page": 96
+  },
+  {
+    "level": 2,
+    "title": "6.3 Average Cluster Size",
+    "page": 100
+  },
+  {
+    "level": 3,
+    "title": "Measuring Moments of the Cluster Number Density",
+    "page": 100
+  },
+  {
+    "level": 3,
+    "title": "Scaling Theory for S(p,L)",
+    "page": 101
+  },
+  {
+    "level": 2,
+    "title": "6.4 Percolation Threshold",
+    "page": 103
+  },
+  {
+    "level": 3,
+    "title": "Measuring the Percolation Probability Π(p,L)",
+    "page": 103
+  },
+  {
+    "level": 3,
+    "title": "Measuring the Percolation Threshold pc",
+    "page": 104
+  },
+  {
+    "level": 3,
+    "title": "Finite-Size Scaling Theory for Π(p,L)",
+    "page": 105
+  },
+  {
+    "level": 3,
+    "title": "Estimating pc Using the Scaling Ansatz",
+    "page": 106
+  },
+  {
+    "level": 3,
+    "title": "Estimating pc and ν Using the Scaling Ansatz",
+    "page": 107
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 107
+  },
+  {
+    "level": 1,
+    "title": "7 Renormalization",
+    "page": 109
+  },
+  {
+    "level": 2,
+    "title": "7.1 The Renormalization Mapping",
+    "page": 110
+  },
+  {
+    "level": 3,
+    "title": "Iterating the Renormalization Mapping",
+    "page": 114
+  },
+  {
+    "level": 2,
+    "title": "7.2 Examples",
+    "page": 116
+  },
+  {
+    "level": 3,
+    "title": "Example: One-Dimensional Percolation",
+    "page": 116
+  },
+  {
+    "level": 3,
+    "title": "Example: One-Dimensional Percolation",
+    "page": 116
+  },
+  {
+    "level": 3,
+    "title": "Example: Renormalization on 2d Site Lattice",
+    "page": 117
+  },
+  {
+    "level": 3,
+    "title": "Example: Renormalization on 2d Site Lattice",
+    "page": 117
+  },
+  {
+    "level": 3,
+    "title": "Example: Renormalization on 2d Triangular Lattice",
+    "page": 119
+  },
+  {
+    "level": 3,
+    "title": "Example: Renormalization on 2d Triangular Lattice",
+    "page": 119
+  },
+  {
+    "level": 3,
+    "title": "Example: Renormalization on 2d Bond Lattice",
+    "page": 121
+  },
+  {
+    "level": 3,
+    "title": "Example: Renormalization on 2d Bond Lattice",
+    "page": 121
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 123
+  },
+  {
+    "level": 1,
+    "title": "8 Subset Geometry",
+    "page": 127
+  },
+  {
+    "level": 2,
+    "title": "8.1 Singly Connected Bonds",
+    "page": 127
+  },
+  {
+    "level": 2,
+    "title": "8.2 Self-Avoiding Paths on the Cluster",
+    "page": 129
+  },
+  {
+    "level": 3,
+    "title": "Minimal Path",
+    "page": 129
+  },
+  {
+    "level": 3,
+    "title": "Maximum and Average Path",
+    "page": 129
+  },
+  {
+    "level": 3,
+    "title": "Backbone",
+    "page": 130
+  },
+  {
+    "level": 3,
+    "title": "Scaling of the Dangling Ends",
+    "page": 131
+  },
+  {
+    "level": 3,
+    "title": "Argument for the Scaling of Subsets",
+    "page": 131
+  },
+  {
+    "level": 3,
+    "title": "Blob Model for the Spanning Cluster",
+    "page": 132
+  },
+  {
+    "level": 3,
+    "title": "Mass-Scaling Exponents for Subsets of the Spanning Clusters",
+    "page": 132
+  },
+  {
+    "level": 2,
+    "title": "8.3 Renormalization Calculation",
+    "page": 133
+  },
+  {
+    "level": 2,
+    "title": "8.4 Deterministic Fractal Models",
+    "page": 134
+  },
+  {
+    "level": 2,
+    "title": "8.5 Lacunarity",
+    "page": 136
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 138
+  },
+  {
+    "level": 1,
+    "title": "9 Flow in Disordered Media",
+    "page": 143
+  },
+  {
+    "level": 2,
+    "title": "9.1 Introduction to Disorder",
+    "page": 143
+  },
+  {
+    "level": 2,
+    "title": "9.2 Conductivity and Permeability",
+    "page": 144
+  },
+  {
+    "level": 3,
+    "title": "Electrical Conductivity and Resistor Networks",
+    "page": 144
+  },
+  {
+    "level": 3,
+    "title": "Flow Conductivity of a Porous System",
+    "page": 145
+  },
+  {
+    "level": 2,
+    "title": "9.3 Conductance of a Percolation Lattice",
+    "page": 146
+  },
+  {
+    "level": 3,
+    "title": "Finding the Conductance of the System",
+    "page": 146
+  },
+  {
+    "level": 3,
+    "title": "Computational Methods",
+    "page": 148
+  },
+  {
+    "level": 3,
+    "title": "Measuring the Conductance",
+    "page": 152
+  },
+  {
+    "level": 3,
+    "title": "Conductance and the Density of the Spanning Cluster",
+    "page": 154
+  },
+  {
+    "level": 2,
+    "title": "9.4 Scaling Arguments for Conductance and Conductivity",
+    "page": 155
+  },
+  {
+    "level": 3,
+    "title": "Scaling Argument for p>pc and L ξ",
+    "page": 155
+  },
+  {
+    "level": 3,
+    "title": "Conductance of the Spanning Cluster",
+    "page": 156
+  },
+  {
+    "level": 3,
+    "title": "Conductivity for p>pc",
+    "page": 158
+  },
+  {
+    "level": 2,
+    "title": "9.5 Renormalization Calculation",
+    "page": 159
+  },
+  {
+    "level": 2,
+    "title": "9.6 Finite Size Scaling",
+    "page": 160
+  },
+  {
+    "level": 3,
+    "title": "Finite-Size Scaling Observations",
+    "page": 160
+  },
+  {
+    "level": 2,
+    "title": "9.7 Internal Distribution of Currents",
+    "page": 163
+  },
+  {
+    "level": 2,
+    "title": "9.8 Real Conductivity",
+    "page": 166
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 168
+  },
+  {
+    "level": 1,
+    "title": "10 Elastic Properties of Disordered Media",
+    "page": 170
+  },
+  {
+    "level": 2,
+    "title": "10.1 Rigidity Percolation",
+    "page": 170
+  },
+  {
+    "level": 3,
+    "title": "Developing a Theory for E(p,L)",
+    "page": 172
+  },
+  {
+    "level": 3,
+    "title": "Compliance of the Spanning Cluster at p = pc",
+    "page": 174
+  },
+  {
+    "level": 3,
+    "title": "Finding Young's Modulus E(p,L)",
+    "page": 176
+  },
+  {
+    "level": 1,
+    "title": "11 Diffusion in Disordered Media",
+    "page": 178
+  },
+  {
+    "level": 2,
+    "title": "11.1 Diffusion and Random Walks in Homogeneous Media",
+    "page": 178
+  },
+  {
+    "level": 3,
+    "title": "Theory for the Time Development of a Random Walk",
+    "page": 179
+  },
+  {
+    "level": 3,
+    "title": "Continuum Description of a Random Walker",
+    "page": 181
+  },
+  {
+    "level": 2,
+    "title": "11.2 Random Walks on Clusters",
+    "page": 182
+  },
+  {
+    "level": 3,
+    "title": "Developing a Program to Study Random Walks on Clusters",
+    "page": 182
+  },
+  {
+    "level": 3,
+    "title": "Diffusion on a Finite Cluster for p<pc",
+    "page": 189
+  },
+  {
+    "level": 3,
+    "title": "Diffusion at p = pc",
+    "page": 192
+  },
+  {
+    "level": 3,
+    "title": "Diffusion for p>pc",
+    "page": 192
+  },
+  {
+    "level": 3,
+    "title": "Scaling Theory",
+    "page": 193
+  },
+  {
+    "level": 3,
+    "title": "Diffusion on the Spanning Cluster",
+    "page": 197
+  },
+  {
+    "level": 3,
+    "title": "The Diffusion Constant D",
+    "page": 199
+  },
+  {
+    "level": 2,
+    "title": "Exercises",
+    "page": 200
+  },
+  {
+    "level": 1,
+    "title": "12 Dynamic Processes in Disordered Media",
+    "page": 202
+  },
+  {
+    "level": 2,
+    "title": "12.1 Introduction",
+    "page": 202
+  },
+  {
+    "level": 2,
+    "title": "12.2 Diffusion Fronts",
+    "page": 203
+  },
+  {
+    "level": 2,
+    "title": "12.3 Invasion Percolation",
+    "page": 205
+  },
+  {
+    "level": 3,
+    "title": "Gravity Stabilization",
+    "page": 210
+  },
+  {
+    "level": 3,
+    "title": "Gravity Destabilization",
+    "page": 213
+  },
+  {
+    "level": 1,
+    "title": "References",
+    "page": 216
+  },
+  {
+    "level": 1,
+    "title": "Index",
+    "page": 218
+  }
+]
