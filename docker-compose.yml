@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  dolphin-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - AZURE_STORAGE_CONNECTION_STRING=${AZURE_STORAGE_CONNECTION_STRING}
+      - MODEL_PATH=${MODEL_PATH:-/app/models}
+      - MAX_BATCH_SIZE=${MAX_BATCH_SIZE:-16}
+      - CONTAINER_NAME=${CONTAINER_NAME:-dolphin-processing}
+    volumes:
+      # Mount local model directory if available
+      - ./Dolphin/hf_model:/app/models:ro
+      # Mount API module for development
+      - ./api:/app/api:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
