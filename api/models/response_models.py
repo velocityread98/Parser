@@ -74,3 +74,4 @@ class ErrorResponse(BaseModel):
     detail: Optional[str] = Field(None, description="Detailed error information")
     task_id: Optional[str] = Field(None, description="Task ID if available")
 
+
