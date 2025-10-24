@@ -1,9 +1,12 @@
 """
 Data models module for the Dolphin PDF Processing API
+
+Now uses shared velocityread-models package.
 """
 
-from .request_models import ProcessingRequest, UploadProcessingRequest
-from .response_models import (
+from velocityread_models.parser import (
+    ProcessingRequest,
+    UploadProcessingRequest,
     ElementData,
     ErrorResponse,
     HealthResponse,

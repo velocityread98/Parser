@@ -4,6 +4,9 @@ uvicorn[standard]==0.24.0
 pydantic==2.5.0
 aiofiles==23.2.1
 
+# Shared models package
+git+https://github.com/velocityread/velocityread-models.git
+
 # Azure Blob Storage
 azure-storage-blob==12.19.0
 

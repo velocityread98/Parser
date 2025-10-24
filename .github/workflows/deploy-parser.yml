@@ -1,0 +1,114 @@
+name: Deploy Parser to Azure Container Apps Job
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'Parser/**'
+      - 'VelocityReadModels/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'Parser/**'
+      - 'VelocityReadModels/**'
+  workflow_dispatch:
+
+env:
+  AZURE_CONTAINER_REGISTRY: ${{ secrets.ACR_NAME }}
+  CONTAINER_APP_JOB_NAME: ${{ secrets.PARSER_CONTAINER_APP_JOB_NAME }}
+  RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP }}
+  CONTAINER_APPS_ENVIRONMENT: ${{ secrets.CONTAINER_APPS_ENVIRONMENT }}
+  IMAGE_NAME: velocityread-parser
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Login to Azure Container Registry
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.AZURE_CONTAINER_REGISTRY }}
+        username: ${{ secrets.ACR_USERNAME }}
+        password: ${{ secrets.ACR_PASSWORD }}
+
+    - name: Build and push Docker image
+      run: |
+        cd Parser
+        docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+        docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:latest .
+        docker push ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        docker push ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+    - name: Deploy to Azure Container Apps Job
+      run: |
+        # Create or update Container App Job
+        az containerapp job create \
+          --name ${{ env.CONTAINER_APP_JOB_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --environment ${{ env.CONTAINER_APPS_ENVIRONMENT }} \
+          --image ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+          --cpu 2.0 \
+          --memory 4.0Gi \
+          --parallelism 1 \
+          --replica-timeout 1800 \
+          --replica-retry-limit 1 \
+          --env-vars \
+            AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }} \
+            DATABASE_URL=${{ secrets.DATABASE_URL }} \
+            MODEL_PATH=${{ secrets.MODEL_PATH }} \
+            MAX_BATCH_SIZE=${{ secrets.MAX_BATCH_SIZE }} \
+            BETTERSTACK_SOURCE_TOKEN=${{ secrets.BETTERSTACK_SOURCE_TOKEN }} \
+            DEBUG=${{ secrets.DEBUG }} \
+            PDF_URL="" \
+            BOOK_ID="" \
+            USER_ID="" \
+            JOB_TYPE="" \
+            TIMESTAMP="" \
+          --registry-server ${{ env.AZURE_CONTAINER_REGISTRY }} \
+          --registry-username ${{ secrets.ACR_USERNAME }} \
+          --registry-password ${{ secrets.ACR_PASSWORD }} \
+          --output table || \
+        az containerapp job update \
+          --name ${{ env.CONTAINER_APP_JOB_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --image ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
+          --cpu 2.0 \
+          --memory 4.0Gi \
+          --parallelism 1 \
+          --replica-timeout 1800 \
+          --replica-retry-limit 1 \
+          --env-vars \
+            AZURE_STORAGE_CONNECTION_STRING=${{ secrets.AZURE_STORAGE_CONNECTION_STRING }} \
+            DATABASE_URL=${{ secrets.DATABASE_URL }} \
+            MODEL_PATH=${{ secrets.MODEL_PATH }} \
+            MAX_BATCH_SIZE=${{ secrets.MAX_BATCH_SIZE }} \
+            BETTERSTACK_SOURCE_TOKEN=${{ secrets.BETTERSTACK_SOURCE_TOKEN }} \
+            DEBUG=${{ secrets.DEBUG }} \
+            PDF_URL="" \
+            BOOK_ID="" \
+            USER_ID="" \
+            JOB_TYPE="" \
+            TIMESTAMP="" \
+          --output table
+
+    - name: Verify Container App Job
+      run: |
+        echo "✅ Parser Container App Job deployed successfully"
+        az containerapp job show --name ${{ env.CONTAINER_APP_JOB_NAME }} --resource-group ${{ env.RESOURCE_GROUP }} --query "{name:name, image:properties.template.containers[0].image, status:properties.provisioningState}" --output table
